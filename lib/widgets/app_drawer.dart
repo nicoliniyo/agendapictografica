@@ -36,7 +36,7 @@ class _AppDrawer extends State<AppDrawer> {
                     gradient: LinearGradient(
                       colors: [
                         Colors.white,
-                        Colors.blue
+                        Color.fromARGB(255, 234, 236, 236)
                       ], // Adjust colors as needed
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,

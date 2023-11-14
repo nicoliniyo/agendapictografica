@@ -7,9 +7,9 @@
 import 'dart:io';
 
 import 'package:app/pages/design_system.dart';
-import 'package:app/theme/custom_theme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 // Sets a platform override for desktop to avoid exceptions. See
 // https://flutter.dev/desktop#target-platform-override for more info.
@@ -41,7 +41,7 @@ class AgendaPecsApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Agenda PECS',
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.light,
       darkTheme: ThemeData.dark().copyWith(
         useMaterial3: true,
         colorScheme: kDarkColorScheme,
@@ -53,10 +53,47 @@ class AgendaPecsApp extends StatelessWidget {
           ),
         ),
         textTheme: ThemeData().textTheme.copyWith(
+              headlineLarge: TextStyle(
+                fontFamily: GoogleFonts.roboto().fontFamily,
+                fontWeight: FontWeight.normal,
+                color: kColorScheme.onSecondaryContainer,
+                
+              ),
+              headlineMedium: TextStyle(
+                fontFamily: GoogleFonts.roboto().fontFamily,
+                fontWeight: FontWeight.normal,
+                color: kColorScheme.onSecondaryContainer,
+                
+              ),
+              headlineSmall: TextStyle(
+                fontFamily: GoogleFonts.roboto().fontFamily,
+                fontWeight: FontWeight.normal,
+                color: kColorScheme.onSecondaryContainer,
+                
+              ),
               titleLarge: TextStyle(
-                fontWeight: FontWeight.bold,
+                fontFamily: GoogleFonts.roboto().fontFamily,
+                fontWeight: FontWeight.normal,
                 color: kColorScheme.onSecondaryContainer,
                 fontSize: 16,
+              ),
+              titleMedium: TextStyle(
+                fontFamily: GoogleFonts.roboto().fontFamily,
+                fontWeight: FontWeight.normal,
+                color: kColorScheme.onSecondaryContainer,
+                fontSize: 14,
+              ),
+              titleSmall: TextStyle(
+                fontFamily: GoogleFonts.roboto().fontFamily,
+                fontWeight: FontWeight.normal,
+                color: kColorScheme.onSecondaryContainer,
+                fontSize: 12,
+              ),
+              bodyLarge: TextStyle(
+                fontFamily: GoogleFonts.roboto().fontFamily,
+                
+                color: kColorScheme.onSecondaryContainer,
+                
               ),
             ),
         elevatedButtonTheme: ElevatedButtonThemeData(
