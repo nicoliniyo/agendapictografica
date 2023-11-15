@@ -44,7 +44,12 @@ dependencies:
   ionicons: ^0.2.2
   material_design_icons_flutter: ^7.0.7296
   connectivity_plus: ^5.0.1
+  flutter_launcher_icons: ^0.13.1
 
+flutter_icons:
+  android: true
+  ios: true
+  image_path: 'assets/icons/icon.png'
 dev_dependencies:
   flutter_test:
     sdk: flutter

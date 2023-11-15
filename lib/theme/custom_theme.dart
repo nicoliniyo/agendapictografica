@@ -19,7 +19,7 @@ ThemeData lightTheme = ThemeData(
           borderRadius: BorderRadius.circular(20.0)
         )
       ),
-      backgroundColor: MaterialStateProperty.all<Color>(ThemeColors.accentColor),
+      backgroundColor: MaterialStateProperty.all<Color>(ThemeColors.primary),
     )),
   
   textTheme: const TextTheme(

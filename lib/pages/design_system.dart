@@ -43,8 +43,24 @@ class DesignSystem extends StatelessWidget {
             //Text(lorem, style: Theme.of(context).textTheme.bodyLarge!, textAlign: TextAlign.justify,),
             ElevatedButton(
               onPressed: (){}
-            , child: Text('Select'))
+            , child: Text('Select')),
+            const SizedBox(height: 16,),
+            ElevatedButton(
+              style: Theme.of(context).elevatedButtonTheme.style.backgroundColor: ,
+                onPressed: (){},
+              child: Text('Select'),
+            ),
+            const SizedBox(height: 16,),
+            ElevatedButton(
+                onPressed: (){}
+                , child: Text('Select')),
+            const SizedBox(height: 16,),
+            ElevatedButton(
+                onPressed: (){}
+                , child: Text('Select')),
+
             ],
+
         ),
       ),
     );
