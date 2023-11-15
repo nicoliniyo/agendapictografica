@@ -1,6 +1,53 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+ThemeData lightTheme = ThemeData(
+  brightness: Brightness.light,
+  useMaterial3: true,
+  primaryColor: ThemeColors.primary,
+
+  floatingActionButtonTheme: const FloatingActionButtonThemeData(
+    backgroundColor: ThemeColors.accentColor,  ),
+  
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ButtonStyle(
+      padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+        const EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0)
+      ),
+      shape: MaterialStateProperty.all<OutlinedBorder>(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0)
+        )
+      ),
+      backgroundColor: MaterialStateProperty.all<Color>(ThemeColors.accentColor),
+    )),
+  
+  textTheme: const TextTheme(
+    
+    displayLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+    bodyLarge: TextStyle(fontSize: 18, color: Color.fromARGB(221, 97, 95, 95)),
+  ),
+  // appBarTheme: const AppBarTheme(
+  //   color: Color.fromARGB(255, 228, 229, 230),
+  //   iconTheme: IconThemeData(color: Color.fromARGB(255, 100, 99, 99)),
+  // ),
+  // colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 4, 91, 161)),
+);
+
+ThemeData darkTheme = ThemeData(
+  brightness: Brightness.dark,
+  useMaterial3: true,
+  // textTheme: const TextTheme(
+  //   displayLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+  //   bodyLarge: TextStyle(fontSize: 18, color: Colors.black87),
+  // ),
+  // appBarTheme: const AppBarTheme(
+  //   color: Color.fromARGB(255, 228, 229, 230),
+  //   iconTheme: IconThemeData(color: Color.fromARGB(255, 100, 99, 99)),
+  // ),
+  // colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 4, 91, 161)),
+);
+
 class ThemeColors {
   static const Color black = Color(0xFF000000);
   static const Color white = Color(0xFFFFFFFF);

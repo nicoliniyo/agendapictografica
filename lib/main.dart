@@ -7,6 +7,8 @@
 import 'dart:io';
 
 import 'package:app/pages/design_system.dart';
+import 'package:app/theme/custom_theme.dart';
+import 'package:app/theme/theme_manager.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -30,107 +32,50 @@ var kDarkColorScheme = ColorScheme.fromSeed(
 
 void main() {
   _enablePlatformOverrideForDesktop();
-  runApp(const AgendaPecsApp());
+  runApp(AgendaPecsApp());
 }
 
-class AgendaPecsApp extends StatelessWidget {
-  const AgendaPecsApp({Key? key}) : super(key: key);
+ThemeManager _themeManager = ThemeManager();
 
-  // This widget is the root of your application.
+class AgendaPecsApp extends StatefulWidget {
+
+  @override
+  _AgendaPecsApp createState() => _AgendaPecsApp();
+
+}
+
+class _AgendaPecsApp extends State<AgendaPecsApp> {
+
+  @override
+  void dispose() {
+    _themeManager.removeListener(themeListener);
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    _themeManager.addListener(themeListener);
+    super.initState();
+  }
+
+  themeListener() {
+    if(mounted) {
+      setState(() {
+        
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Agenda PECS',
-      themeMode: ThemeMode.light,
-      darkTheme: ThemeData.dark().copyWith(
-        useMaterial3: true,
-        colorScheme: kDarkColorScheme,
-        cardTheme: const CardTheme().copyWith(
-          color: kDarkColorScheme.secondaryContainer,
-          margin: const EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 8,
-          ),
-        ),
-        textTheme: ThemeData().textTheme.copyWith(
-              headlineLarge: TextStyle(
-                fontFamily: GoogleFonts.roboto().fontFamily,
-                fontWeight: FontWeight.normal,
-                color: kColorScheme.onSecondaryContainer,
-                
-              ),
-              headlineMedium: TextStyle(
-                fontFamily: GoogleFonts.roboto().fontFamily,
-                fontWeight: FontWeight.normal,
-                color: kColorScheme.onSecondaryContainer,
-                
-              ),
-              headlineSmall: TextStyle(
-                fontFamily: GoogleFonts.roboto().fontFamily,
-                fontWeight: FontWeight.normal,
-                color: kColorScheme.onSecondaryContainer,
-                
-              ),
-              titleLarge: TextStyle(
-                fontFamily: GoogleFonts.roboto().fontFamily,
-                fontWeight: FontWeight.normal,
-                color: kColorScheme.onSecondaryContainer,
-                fontSize: 16,
-              ),
-              titleMedium: TextStyle(
-                fontFamily: GoogleFonts.roboto().fontFamily,
-                fontWeight: FontWeight.normal,
-                color: kColorScheme.onSecondaryContainer,
-                fontSize: 14,
-              ),
-              titleSmall: TextStyle(
-                fontFamily: GoogleFonts.roboto().fontFamily,
-                fontWeight: FontWeight.normal,
-                color: kColorScheme.onSecondaryContainer,
-                fontSize: 12,
-              ),
-              bodyLarge: TextStyle(
-                fontFamily: GoogleFonts.roboto().fontFamily,
-                
-                color: kColorScheme.onSecondaryContainer,
-                
-              ),
-            ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: kDarkColorScheme.primaryContainer,
-            foregroundColor: kDarkColorScheme.onPrimaryContainer,
-          ),
-        ),
-      ),
-      theme: ThemeData().copyWith(
-        useMaterial3: true,
-        colorScheme: kColorScheme,
-        appBarTheme: const AppBarTheme().copyWith(
-          backgroundColor: kColorScheme.onPrimaryContainer,
-          foregroundColor: kColorScheme.primaryContainer,
-        ),
-        cardTheme: const CardTheme().copyWith(
-          color: kColorScheme.secondaryContainer,
-          margin: const EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 8,
-          ),
-        ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: kColorScheme.primaryContainer,
-          ),
-        ),
-        textTheme: ThemeData().textTheme.copyWith(
-              titleLarge: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: kColorScheme.onSecondaryContainer,
-                fontSize: 16,
-              ),
-            ),
-      ),
-      home: const DesignSystem(),
+      
+      themeMode: _themeManager.themeMode,
+      
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      home: DesignSystem(themeManager: _themeManager),
     );
   }
 }

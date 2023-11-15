@@ -1,3 +1,4 @@
+import 'package:app/theme/theme_manager.dart';
 import 'package:app/widgets/app_drawer.dart';
 import 'package:flutter/material.dart';
 
@@ -6,13 +7,19 @@ var lorem = '''Lorem Ipsum is simply dummy text of the printing and typesetting 
 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 ''';
 class DesignSystem extends StatelessWidget {
-  const DesignSystem({super.key});
+  const DesignSystem({super.key, required this.themeManager});
 
+  final ThemeManager themeManager;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [Switch(value: themeManager.themeMode == ThemeMode.dark
+        , onChanged: (newValue) {
+          themeManager.toggleTheme(newValue);
+        })],
+      ),
       drawer: const AppDrawer(),
       body: Container(
         padding: EdgeInsets.all(16),
@@ -32,9 +39,11 @@ class DesignSystem extends StatelessWidget {
             Text('Body Large', style: Theme.of(context).textTheme.bodyLarge!,),
             Text('Body Medium', style: Theme.of(context).textTheme.bodyMedium!,),
             Text('Body Small', style: Theme.of(context).textTheme.bodySmall!,),
-            SizedBox(height: 16,),
-            Text(lorem, style: Theme.of(context).textTheme.bodyLarge!, textAlign: TextAlign.justify,),
-            
+            const SizedBox(height: 16,),
+            //Text(lorem, style: Theme.of(context).textTheme.bodyLarge!, textAlign: TextAlign.justify,),
+            ElevatedButton(
+              onPressed: (){}
+            , child: Text('Select'))
             ],
         ),
       ),
