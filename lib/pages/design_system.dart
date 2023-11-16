@@ -1,6 +1,7 @@
 import 'package:app/theme/theme_manager.dart';
 import 'package:app/widgets/app_drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:app/theme/custom_theme.dart';
 
 var lorem = '''Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
 
@@ -43,21 +44,20 @@ class DesignSystem extends StatelessWidget {
             //Text(lorem, style: Theme.of(context).textTheme.bodyLarge!, textAlign: TextAlign.justify,),
             ElevatedButton(
               onPressed: (){}
-            , child: Text('Select')),
+            , child: const Text('Select')),
             const SizedBox(height: 16,),
             ElevatedButton(
-              style: Theme.of(context).elevatedButtonTheme.style.backgroundColor: ,
                 onPressed: (){},
-              child: Text('Select'),
+              child: const Text('Select'),
             ),
             const SizedBox(height: 16,),
             ElevatedButton(
                 onPressed: (){}
-                , child: Text('Select')),
+                , child: const Text('Select')),
             const SizedBox(height: 16,),
             ElevatedButton(
                 onPressed: (){}
-                , child: Text('Select')),
+                , child: const Text('Select')),
 
             ],
 

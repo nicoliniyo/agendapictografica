@@ -1,6 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+ TextStyle myHeadline1 = GoogleFonts.notoSerif(
+  textStyle: const TextStyle(
+    // ignore: avoid_redundant_argument_values
+    inherit: true,
+    //color: myColorSchemes.onSurface,
+    //backgroundColor: myColorSchemes.background,
+    fontSize: 96,
+    fontWeight: FontWeight.w300,
+    fontStyle: FontStyle.normal,
+    letterSpacing: -1.5,
+    textBaseline: TextBaseline.alphabetic,
+    leadingDistribution: TextLeadingDistribution.even,
+    debugLabel: 'Headline1',
+    overflow: TextOverflow.fade,
+  ),
+);
+
 ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   useMaterial3: true,
@@ -24,8 +41,65 @@ ThemeData lightTheme = ThemeData(
   
   textTheme: const TextTheme(
     
-    displayLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
-    bodyLarge: TextStyle(fontSize: 18, color: Color.fromARGB(221, 97, 95, 95)),
+    headlineLarge: TextStyle(
+      fontFamily: 'Anton',
+        // ignore: avoid_redundant_argument_values
+        inherit: true,
+        //color: myColorSchemes.onSurface,
+        //backgroundColor: myColorSchemes.background,
+        fontSize: 96,
+        fontWeight: FontWeight.w300,
+        fontStyle: FontStyle.normal,
+        letterSpacing: -1.5,
+        textBaseline: TextBaseline.alphabetic,
+        leadingDistribution: TextLeadingDistribution.even,
+        debugLabel: 'Headline1',
+        overflow: TextOverflow.fade,
+      ),
+
+    // headlineLarge: TextStyle(
+      
+    //             fontFamily: 'Anton',
+    //             fontWeight: FontWeight.normal,
+    //             color: Color.fromARGB(255, 107, 3, 244),
+                
+    //           ),
+              headlineMedium: TextStyle(
+                // fontFamily: GoogleFonts.roboto().fontFamily,
+                fontWeight: FontWeight.normal,
+                color: ThemeColors.primary
+                
+              ),
+              headlineSmall: TextStyle(
+                // fontFamily: GoogleFonts.roboto().fontFamily,
+                fontWeight: FontWeight.normal,
+                color: ThemeColors.primary
+                
+              ),
+              titleLarge: TextStyle(
+                // fontFamily: GoogleFonts.roboto().fontFamily,
+                fontWeight: FontWeight.normal,
+                color: ThemeColors.primary
+                // fontSize: 16,
+              ),
+              titleMedium: TextStyle(
+                // fontFamily: GoogleFonts.roboto().fontFamily,
+                fontWeight: FontWeight.normal,
+                color: ThemeColors.primary,
+                fontSize: 14,
+              ),
+              titleSmall: TextStyle(
+                // fontFamily: GoogleFonts.roboto().fontFamily,
+                fontWeight: FontWeight.normal,
+                color: ThemeColors.primary,
+                fontSize: 12,
+              ),
+              bodyLarge: TextStyle(
+                // fontFamily: GoogleFonts.roboto().fontFamily,
+                
+                color: ThemeColors.primary
+                
+              ),
   ),
   // appBarTheme: const AppBarTheme(
   //   color: Color.fromARGB(255, 228, 229, 230),
@@ -37,6 +111,19 @@ ThemeData lightTheme = ThemeData(
 ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
   useMaterial3: true,
+
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ButtonStyle(
+      padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+        const EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0)
+      ),
+      shape: MaterialStateProperty.all<OutlinedBorder>(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0)
+        )
+      ),
+      backgroundColor: MaterialStateProperty.all<Color>(ThemeColors.accentColor),
+    )),
   // textTheme: const TextTheme(
   //   displayLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
   //   bodyLarge: TextStyle(fontSize: 18, color: Colors.black87),
