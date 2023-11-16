@@ -22,6 +22,7 @@ ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   useMaterial3: true,
   primaryColor: ThemeColors.primary,
+  //primarySwatch: MaterialStateProperty.all<Color>(ThemeColors.accentColor),
 
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
     backgroundColor: ThemeColors.accentColor,  ),
@@ -70,13 +71,13 @@ ThemeData lightTheme = ThemeData(
   textTheme: const TextTheme(
     
     headlineLarge: TextStyle(
-      fontFamily: 'Anton',
+      //fontFamily: 'Anton',
         // ignore: avoid_redundant_argument_values
         inherit: true,
         //color: myColorSchemes.onSurface,
         //backgroundColor: myColorSchemes.background,
-        fontSize: 96,
-        fontWeight: FontWeight.w300,
+        // fontSize: 20,
+        //fontWeight: FontWeight.w300,
         fontStyle: FontStyle.normal,
         letterSpacing: -1.5,
         textBaseline: TextBaseline.alphabetic,
@@ -95,37 +96,37 @@ ThemeData lightTheme = ThemeData(
               headlineMedium: TextStyle(
                 // fontFamily: GoogleFonts.roboto().fontFamily,
                 fontWeight: FontWeight.normal,
-                color: ThemeColors.primary
+                //color: ThemeColors.primary
                 
               ),
               headlineSmall: TextStyle(
                 // fontFamily: GoogleFonts.roboto().fontFamily,
                 fontWeight: FontWeight.normal,
-                color: ThemeColors.primary
+                //color: ThemeColors.primary
                 
               ),
               titleLarge: TextStyle(
                 // fontFamily: GoogleFonts.roboto().fontFamily,
                 fontWeight: FontWeight.normal,
-                color: ThemeColors.primary
+                //color: ThemeColors.primary
                 // fontSize: 16,
               ),
               titleMedium: TextStyle(
                 // fontFamily: GoogleFonts.roboto().fontFamily,
                 fontWeight: FontWeight.normal,
-                color: ThemeColors.primary,
-                fontSize: 14,
+                //color: ThemeColors.primary,
+                //fontSize: 14,
               ),
               titleSmall: TextStyle(
                 // fontFamily: GoogleFonts.roboto().fontFamily,
                 fontWeight: FontWeight.normal,
-                color: ThemeColors.primary,
-                fontSize: 12,
+                //color: ThemeColors.primary,
+                //fontSize: 12,
               ),
               bodyLarge: TextStyle(
                 // fontFamily: GoogleFonts.roboto().fontFamily,
                 
-                color: ThemeColors.primary
+                //color: ThemeColors.primary
                 
               ),
   ),
@@ -172,6 +173,8 @@ ThemeData darkTheme = ThemeData(
                 style: BorderStyle.solid),
           )
       ),
+      overlayColor: MaterialStateProperty.all<Color>(ThemeColors.accentColor),
+      surfaceTintColor: MaterialStateProperty.all<Color>(ThemeColors.accentColor),
       elevation: MaterialStateProperty.all(1),
       backgroundColor: MaterialStateProperty.all<Color>(ThemeColors.accentColor),
       // foregroundColor: MaterialStateProperty.all<Color>(ThemeColors.black),

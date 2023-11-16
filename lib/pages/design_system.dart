@@ -23,7 +23,7 @@ class DesignSystem extends StatelessWidget {
       ),
       drawer: const AppDrawer(),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
