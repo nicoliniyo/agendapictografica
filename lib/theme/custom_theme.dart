@@ -33,12 +33,40 @@ ThemeData lightTheme = ThemeData(
       ),
       shape: MaterialStateProperty.all<OutlinedBorder>(
         RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20.0)
+          borderRadius: BorderRadius.circular(30.0)
         )
       ),
-      backgroundColor: MaterialStateProperty.all<Color>(ThemeColors.primary),
+      elevation: MaterialStateProperty.all(1),
+      backgroundColor: MaterialStateProperty.all<Color>(ThemeColors.white),
     )),
-  
+
+  outlinedButtonTheme: OutlinedButtonThemeData(
+    // style: OutlinedButton.styleFrom(
+    //     primary: ThemeColors.accentColor,
+    //     backgroundColor: ThemeColors.white,
+    //     foregroundColor: ThemeColors.accentColor,
+    //     ),
+    style: ButtonStyle(
+      padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+          const EdgeInsets.symmetric(horizontal: 40.0, vertical: 10.0)
+      ),
+      shape: MaterialStateProperty.all<OutlinedBorder>(
+          RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30.0),
+            side:
+            const BorderSide(
+                color: ThemeColors.accentColor,
+                width: 20,
+                style: BorderStyle.solid),
+          )
+      ),
+      elevation: MaterialStateProperty.all(1),
+      // backgroundColor: MaterialStateProperty.all<Color>(ThemeColors.white),
+      foregroundColor: MaterialStateProperty.all<Color>(ThemeColors.black),
+    ),
+
+  ),
+
   textTheme: const TextTheme(
     
     headlineLarge: TextStyle(
@@ -124,6 +152,32 @@ ThemeData darkTheme = ThemeData(
       ),
       backgroundColor: MaterialStateProperty.all<Color>(ThemeColors.accentColor),
     )),
+  outlinedButtonTheme: OutlinedButtonThemeData(
+    // style: OutlinedButton.styleFrom(
+    //     primary: ThemeColors.accentColor,
+    //     backgroundColor: ThemeColors.white,
+    //     foregroundColor: ThemeColors.accentColor,
+    //     ),
+    style: ButtonStyle(
+      padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+          const EdgeInsets.symmetric(horizontal: 40.0, vertical: 10.0)
+      ),
+      shape: MaterialStateProperty.all<OutlinedBorder>(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30.0),
+            side:
+            const BorderSide(
+                color: ThemeColors.accentColor,
+                width: 20,
+                style: BorderStyle.solid),
+          )
+      ),
+      elevation: MaterialStateProperty.all(1),
+      backgroundColor: MaterialStateProperty.all<Color>(ThemeColors.accentColor),
+      // foregroundColor: MaterialStateProperty.all<Color>(ThemeColors.black),
+    ),
+
+  ),
   // textTheme: const TextTheme(
   //   displayLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
   //   bodyLarge: TextStyle(fontSize: 18, color: Colors.black87),

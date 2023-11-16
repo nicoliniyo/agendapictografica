@@ -22,7 +22,7 @@ class DesignSystem extends StatelessWidget {
         })],
       ),
       drawer: const AppDrawer(),
-      body: Container(
+      body: SingleChildScrollView(
         padding: EdgeInsets.all(16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -42,20 +42,20 @@ class DesignSystem extends StatelessWidget {
             Text('Body Small', style: Theme.of(context).textTheme.bodySmall!,),
             const SizedBox(height: 16,),
             //Text(lorem, style: Theme.of(context).textTheme.bodyLarge!, textAlign: TextAlign.justify,),
-            ElevatedButton(
+            OutlinedButton(
               onPressed: (){}
             , child: const Text('Select')),
             const SizedBox(height: 16,),
-            ElevatedButton(
+            OutlinedButton(
                 onPressed: (){},
               child: const Text('Select'),
             ),
             const SizedBox(height: 16,),
-            ElevatedButton(
+            OutlinedButton(
                 onPressed: (){}
                 , child: const Text('Select')),
             const SizedBox(height: 16,),
-            ElevatedButton(
+            OutlinedButton(
                 onPressed: (){}
                 , child: const Text('Select')),
 
