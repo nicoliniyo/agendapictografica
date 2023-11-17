@@ -17,12 +17,26 @@ import 'package:google_fonts/google_fonts.dart';
     overflow: TextOverflow.fade,
   ),
 );
-
+MaterialColor myGreen = const MaterialColor(0xFCE4EC400,
+       {
+        50 :  Color(0xFFAAD401),
+        100 : const Color(0xFFAAD403),
+        200 : const Color(0xFFAAD406),
+        300 : const Color(0xFFAAD409),
+        400 : const Color(0xFFAAD40C),
+        500 : const Color(0xFFAAD40F),
+        600 : const Color(0xFFAAD412),
+        700 : const Color(0xFFAAD415),
+        800 : const Color(0xFFAAD418),
+        900 : const Color(0xFFAAD41F)});
 ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   useMaterial3: true,
   primaryColor: ThemeColors.primary,
-  //primarySwatch: MaterialStateProperty.all<Color>(ThemeColors.accentColor),
+  splashColor: ThemeColors.accentColor,
+  primarySwatch: myGreen,
+  hintColor: Colors.yellow,
+  canvasColor: Colors.amber,
 
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
     backgroundColor: ThemeColors.accentColor,  ),
