@@ -29,14 +29,38 @@ MaterialColor myGreen = const MaterialColor(0xFCE4EC400,
         700 : const Color(0xFFAAD415),
         800 : const Color(0xFFAAD418),
         900 : const Color(0xFFAAD41F)});
+var kColorScheme = ColorScheme.fromSeed(
+  seedColor: const Color.fromARGB(255, 3, 169, 244),
+);
+
+var kColorSchemeDark = ColorScheme.fromSeed(
+  seedColor: const Color.fromARGB(255, 7, 85, 122),
+);
+
+ThemeData theTheme = ThemeData().copyWith(
+  useMaterial3: true,
+  colorScheme: kColorScheme
+);
+
 ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   useMaterial3: true,
-  primaryColor: ThemeColors.primary,
+  colorScheme: kColorScheme,
+  primaryColor: ThemeColors.accentColor,
   splashColor: ThemeColors.accentColor,
   primarySwatch: myGreen,
-  hintColor: Colors.yellow,
-  canvasColor: Colors.amber,
+  hintColor: ThemeColors.accentColor,
+  canvasColor: ThemeColors.accentColor,
+  backgroundColor: ThemeColors.accentColor,
+  bottomAppBarColor: ThemeColors.accentColor,
+
+  cardTheme: const CardTheme().copyWith(
+    color: kColorScheme.primaryContainer,
+    margin: const EdgeInsets.symmetric(
+      // horizontal: 16,
+      // vertical: 8,
+    ),
+  ),
 
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
     backgroundColor: ThemeColors.accentColor,  ),

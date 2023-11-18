@@ -25,7 +25,7 @@ class DesignSystem extends StatelessWidget {
       ),
       drawer: const AppDrawer(),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,27 +43,96 @@ class DesignSystem extends StatelessWidget {
             Text('Body Medium', style: Theme.of(context).textTheme.bodyMedium!,),
             Text('Body Small', style: Theme.of(context).textTheme.bodySmall!,),
             const SizedBox(height: 16,),
-            Text(lorem, style: Theme.of(context).textTheme.bodyLarge!, textAlign: TextAlign.justify,),
+            //Text(lorem, style: Theme.of(context).textTheme.bodyLarge!, textAlign: TextAlign.justify,),
             OutlinedButton(
               onPressed: (){}
             , child: const Text('Select')),
             const SizedBox(height: 16,),
-            OutlinedButton(
-                onPressed: (){},
-              child: const Text('Select'),
+            // OutlinedButton(
+            //     onPressed: (){},
+            //   child: const Text('Select'),
+            // ),
+            // const SizedBox(height: 16,),
+            // OutlinedButton(
+            //     onPressed: (){}
+            //     , child: const Text('Select')),
+            // const SizedBox(height: 16,),
+            // OutlinedButton(
+            //     onPressed: (){}
+            //     , child: const Text('Select')),
+            // const SizedBox(height: 16,),
+            Container(child: Card(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 16,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'hola',
+                                style: Theme.of(context).textTheme.titleLarge,
+                              ),
+                              const Text(
+                                'interj. Se emplea como saludo familiar.',
+                              ),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Image.network(
+                                'https://api.arasaac.org/v1/pictograms/6009?url=false&download=false',
+                                width: 150,
+                              ),
+                              Text(
+                                'Imagen',
+                                style: Theme.of(context).textTheme.titleSmall,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 4),
+                    const Row(
+                      children: [
+                        Text(
+                          'Descripcion',
+                        ),
+                        Spacer(),
+                        Row(
+                          children: [
+                            Icon(Icons.download),
+                            SizedBox(width: 8),
+                            Icon(Icons.image_outlined),
+                            SizedBox(width: 8),
+                            Icon(Icons.download_done_rounded),
+                            SizedBox(width: 8),
+                            Icon(Icons.delete_outline_outlined),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ),
-            const SizedBox(height: 16,),
-            OutlinedButton(
-                onPressed: (){}
-                , child: const Text('Select')),
-            const SizedBox(height: 16,),
-            OutlinedButton(
-                onPressed: (){}
-                , child: const Text('Select')),
-            const SizedBox(height: 16,),
-            CardSmall(),
-            ],
-
+            ),
+        ],
         ),
       ),
     );

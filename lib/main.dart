@@ -72,7 +72,7 @@ class _AgendaPecsApp extends State<AgendaPecsApp> {
       title: 'Agenda PECS',
       
       themeMode: _themeManager.themeMode,
-      
+
       theme: lightTheme,
       darkTheme: darkTheme,
       home: DesignSystem(themeManager: _themeManager),
