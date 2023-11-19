@@ -1,5 +1,6 @@
 import 'package:app/theme/theme_manager.dart';
 import 'package:app/widgets/app_drawer.dart';
+import 'package:app/widgets/card_item.dart';
 import 'package:flutter/material.dart';
 import 'package:app/theme/custom_theme.dart';
 
@@ -62,6 +63,27 @@ class DesignSystem extends StatelessWidget {
             //     , child: const Text('Select')),
             // const SizedBox(height: 16,),
             CardSmall(
+              title: 'hola',
+              description: 'Se emplea como saludo familiar',
+              imgUrl: 'https://api.arasaac.org/v1/pictograms/6009?url=false&download=false',
+              tap: () {},
+            ),
+            const SizedBox(height: 16,),
+            CardItem(
+              title: 'hola',
+              description: 'Se emplea como saludo familiar',
+              imgUrl: 'https://api.arasaac.org/v1/pictograms/6009?url=false&download=false',
+              tap: () {},
+            ),
+            const SizedBox(height: 16,),
+            CardItem(
+              title: 'hola',
+              description: 'Se emplea como saludo familiar',
+              imgUrl: 'https://api.arasaac.org/v1/pictograms/6009?url=false&download=false',
+              tap: () {},
+            ),
+            const SizedBox(height: 16,),
+            CardItem(
               title: 'hola',
               description: 'Se emplea como saludo familiar',
               imgUrl: 'https://api.arasaac.org/v1/pictograms/6009?url=false&download=false',
