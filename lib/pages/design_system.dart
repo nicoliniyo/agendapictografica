@@ -61,77 +61,14 @@ class DesignSystem extends StatelessWidget {
             //     onPressed: (){}
             //     , child: const Text('Select')),
             // const SizedBox(height: 16,),
-            Container(child: Card(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 16,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'hola',
-                                style: Theme.of(context).textTheme.titleLarge,
-                              ),
-                              const Text(
-                                'interj. Se emplea como saludo familiar.',
-                              ),
-                            ],
-                          ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Image.network(
-                                'https://api.arasaac.org/v1/pictograms/6009?url=false&download=false',
-                                width: 150,
-                              ),
-                              Text(
-                                'Imagen',
-                                style: Theme.of(context).textTheme.titleSmall,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 4),
-                    const Row(
-                      children: [
-                        Text(
-                          'Descripcion',
-                        ),
-                        Spacer(),
-                        Row(
-                          children: [
-                            Icon(Icons.download),
-                            SizedBox(width: 8),
-                            Icon(Icons.image_outlined),
-                            SizedBox(width: 8),
-                            Icon(Icons.download_done_rounded),
-                            SizedBox(width: 8),
-                            Icon(Icons.delete_outline_outlined),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+            CardSmall(
+              title: 'hola',
+              description: 'Se emplea como saludo familiar',
+              imgUrl: 'https://api.arasaac.org/v1/pictograms/6009?url=false&download=false',
+              tap: () {},
             ),
-            ),
+
+            
         ],
         ),
       ),
