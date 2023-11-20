@@ -1,4 +1,4 @@
-### SUMMARY
+### Summary
 
 Place a very short introduction to your discussion or design here.
 
@@ -6,11 +6,11 @@ Place a very short introduction to your discussion or design here.
 ##### Go Link: flutter.dev/go/{document-title}
 ##### Created: {Month}/{Year}   /  Last updated: {Month}/{Year}
 
-### OBJECTIVE
+### Objective
 
 Objectives of the discussion or design.
 
-### BACKGROUND
+### Background
 
 Background needed to understand the problem domain. Don’t include any “solutions” in this section.
 
@@ -18,7 +18,7 @@ Background needed to understand the problem domain. Don’t include any “solut
 
 Terms Relevant to Discussion - A minimal set of definitions of terms needed to understand the problem domain go here. Do not include widely known concepts (e.g. don’t define “URL” or “GUI”), just things needed to understand the discussion.
 
-### OVERVIEW
+### Overview
 
 Overview of the design or discussion.
 
@@ -26,19 +26,19 @@ Overview of the design or discussion.
 
 What is specifically not being addressed by this discussion or design.
 
-### DETAILED DESIGN/DISCUSSION
+### Detailed Design/Discussion
 
 Detailed Design. Discuss.
 
-### OPEN QUESTIONS
+### Open Questions
 
 * Will it work?
 
-### TESTING PLAN
+### Testing Plan
 
 Provide a description of testing or a link to a testing plan here, if the discussion involves something that can be tested.
 
-### MIGRATION PLAN
+### Migration Plan
 
 Provide a description of the migration plan or a link to a migration plan here, if the discussion involves something that must be migrated.
 

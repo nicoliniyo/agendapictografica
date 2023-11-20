@@ -1,4 +1,7 @@
 # Actividades del Proyecto
+
+Tasks to have in mind, always
+
 **Documentacion**
 
 1. Diseno y Documentacion

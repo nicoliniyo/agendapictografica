@@ -1,22 +1,23 @@
-### SUMMARY
+### Summary
 
 The mockups of the App
 
 ##### Author: Nicolai ({nicoliniyo})
 ##### Created: 11/2023   /  Last updated: 11/2023
 
-### OBJECTIVE
+### Objective
 
 Create the mockup of the app, the screens, identify the functions needed,
 
-### BACKGROUND
+### Background
 
 Flutter app needs the mockups to keep design consistent in terms of features, screen and widgets.
 
 #### Glossary
 
 Flutter project needs, to organize, app screens development, tasks to create in backlog, detailed features and screens to understand the full app design.
-### OVERVIEW
+
+### Overview
 
 Overview of the design or discussion.
 
@@ -24,7 +25,7 @@ Overview of the design or discussion.
 
 App Theme is not required yet, we need to focus on MVP.
 
-### DETAILED DESIGN/DISCUSSION
+### Detailed Design/Discussion
 
 Design Mockups of Screens,, widgets and functions, what is supported, what is not yet.
 
@@ -45,20 +46,20 @@ Design Mockups of Screens,, widgets and functions, what is supported, what is no
 * Login/Signup Screen
 
   
-### MVP
+### Mvp
 
 * Android 9 MVP local apk
 
 
-### MOCKUPS
+### Mockups
 
 ![](media/diseno.png)
 
-### TESTING PLAN
+### Testing Plan
 
 Provide a description of testing or a link to a testing plan here, if the discussion involves something that can be tested.
 
-### RELEASE TO STORES PLAN
+### Release to Stores
 
 * Release 0.9 to Google Play Store
 * Release 0.9 to Linux Desktop App
