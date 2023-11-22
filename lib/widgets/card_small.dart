@@ -1,22 +1,40 @@
+import 'package:app/classes/pecs_url_builder.dart';
+import 'package:app/classes/pictogram_utils.dart';
 import 'package:app/classes/string_capitalize_extension.dart';
+import 'package:app/data/pec.dart';
+import 'package:app/models/pictograms.dart';
 import 'package:app/theme/custom_theme.dart';
 import 'package:app/widgets/icons_stacked.dart';
 import 'package:flutter/material.dart';
 
 class CardSmall extends StatelessWidget {
+
+  CardSmall.fromPictogram(Pictograms pictogram){
+    Pec pecObj = PictogramUtils.toPec(pictogram);
+    print("PEC: " + pecObj.toString());
+    id = pecObj!.id;
+    title = pecObj!.keywords;
+    description = pecObj!.description;
+    imgUrl = PecsUrlBuilder().pictograms(pecObj!.id.toString());
+    tap = (){};
+  }
+
   CardSmall(
       {
         super.key,
-        required this.title,
-        required this.description,
-        required this.imgUrl,
-        required this.tap
+        this.id,
+        this.title,
+        this.description,
+        this.imgUrl,
+        this.tap
        });
 
-  final String description;
-  final String imgUrl;
-  final Function tap;
-  final String title;
+  int? id;
+  String? description;
+  String? imgUrl;
+  Function? tap;
+  String? title;
+
 
  
 
@@ -40,11 +58,11 @@ class CardSmall extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                title,
+                                title!,
                                 style: Theme.of(context).textTheme.titleLarge,
                               ),
                               Text(
-                                description,
+                                description!,
                               ),
                             ],
                           ),
@@ -57,11 +75,11 @@ class CardSmall extends StatelessWidget {
                             children: [
                               Image.network(
                                 // 'https://api.arasaac.org/v1/pictograms/6009?url=false&download=false',
-                                imgUrl,
+                                imgUrl!,
                                 width: 150,
                               ),
                               Text(
-                                title.capitalize(),
+                                title!.capitalize(),
                                 style: Theme.of(context).textTheme.titleSmall,
                               ),
                             ],

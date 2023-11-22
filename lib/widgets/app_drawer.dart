@@ -1,7 +1,12 @@
+import 'package:app/pages/design_system.dart';
+import 'package:app/pages/search_page.dart';
+import 'package:app/theme/theme_manager.dart';
 import 'package:flutter/material.dart';
 
 import '../theme/custom_theme.dart';
 import 'build_number.dart';
+
+ThemeManager _themeManager = ThemeManager();
 
 class AppDrawer extends StatefulWidget {
   const AppDrawer({super.key});
@@ -60,26 +65,53 @@ class _AppDrawer extends State<AppDrawer> {
                     ],
                   ),
                 ),
-                // ListTile(
-                //   title: Row(
-                //     children: [
-                //       const Icon(
-                //         Icons.wifi,
-                //         color: ThemeColors.primaryText,
-                //       ),
-                //       const SizedBox(
-                //         width: 10,
-                //       ),
-                //       Text('Network Info', style: ThemeTextStyle.robotoText),
-                //     ],
-                //   ),
-                //   selected: _selectedIndex == 0,
-                //   onTap: () {
-                //     _onItemTapped(0);
-                //     Navigator.pop(context);
-                //   },
-                // ),
+                ListTile(
+                  title: Row(
+                    children: [
+                      const Icon(
+                        Icons.dashboard,
+                        color: ThemeColors.primaryText,
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text('Components', style: ThemeTextStyle.robotoText),
+                    ],
+                  ),
+                  selected: _selectedIndex == 0,
+                  onTap: () {
+                    _onItemTapped(0);
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (ctx) => DesignSystem(themeManager: _themeManager,),
+                      ),
+                    );
+                  },
+                ),
                 // Add other list items here
+                ListTile(
+                  title: Row(
+                    children: [
+                      const Icon(
+                        Icons.search_outlined,
+                        color: ThemeColors.primaryText,
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text('Buscar', style: ThemeTextStyle.robotoText),
+                    ],
+                  ),
+                  selected: _selectedIndex == 1,
+                  onTap: () {
+                    _onItemTapped(1);
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (ctx) => SearchPage(themeManager: _themeManager,),
+                      ),
+                    );
+                  },
+                ),
               ],
             ),
           ),

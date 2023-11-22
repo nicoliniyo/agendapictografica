@@ -1,0 +1,184 @@
+{ "pictograms" : [
+    {
+        "_id": 2627,
+        "created": "2007-12-19T09:44:46.000Z",
+        "downloads": 0,
+        "tags": [
+            "communication",
+            "language",
+            "alphabet",
+            "number",
+            "mathematics"
+        ],
+        "synsets": [
+            "06820056-n",
+            "02193977-s",
+            "13764713-n",
+            "13603216-n",
+            "00916568-a"
+        ],
+        "sex": false,
+        "lastUpdated": "2020-06-01T05:36:26.770Z",
+        "schematic": false,
+        "keywords": [
+            {
+                "keyword": "uno",
+                "type": 6,
+                "meaning": " m. Signo con que se representa este número: 1. ",
+                "plural": "",
+                "hasLocution": true
+            },
+            {
+                "keyword": "1",
+                "type": 6,
+                "meaning": "Signo con que se representa el número uno.",
+                "plural": "",
+                "hasLocution": true
+            }
+        ],
+        "desc": "",
+        "categories": [
+            "number"
+        ],
+        "violence": false,
+        "hair": false,
+        "skin": false,
+        "aac": false,
+        "aacColor": false
+    },
+    {
+        "_id": 4889,
+        "created": "2008-06-27T13:18:57.000Z",
+        "downloads": 0,
+        "tags": [
+            "communication",
+            "language",
+            "alphabet",
+            "number",
+            "mathematics"
+        ],
+        "synsets": [
+            "02193977-s",
+            "13764713-n"
+        ],
+        "sex": false,
+        "lastUpdated": "2020-06-01T12:12:16.398Z",
+        "schematic": false,
+        "keywords": [
+            {
+                "keyword": "uno",
+                "type": 6,
+                "meaning": " m. Signo con que se representa este número: 1. ",
+                "plural": "",
+                "hasLocution": true
+            },
+            {
+                "keyword": "1",
+                "type": 6,
+                "meaning": "Signo con que se representa el número uno.",
+                "plural": "",
+                "hasLocution": true
+            }
+        ],
+        "desc": "",
+        "categories": [
+            "number"
+        ],
+        "violence": false,
+        "hair": false,
+        "skin": false,
+        "aac": false,
+        "aacColor": false
+    },
+    {
+        "_id": 7291,
+        "created": "2009-01-22T11:12:55.000Z",
+        "downloads": 0,
+        "tags": [
+            "communication",
+            "language",
+            "alphabet",
+            "number",
+            "mathematics"
+        ],
+        "synsets": [
+            "06820056-n",
+            "02193977-s",
+            "13764713-n",
+            "13603216-n",
+            "00916568-a"
+        ],
+        "sex": false,
+        "lastUpdated": "2020-06-01T12:12:23.837Z",
+        "schematic": false,
+        "keywords": [
+            {
+                "keyword": "uno",
+                "type": 6,
+                "meaning": " m. Signo con que se representa este número: 1. ",
+                "plural": "",
+                "hasLocution": true
+            },
+            {
+                "keyword": "1",
+                "type": 6,
+                "meaning": "Signo con que se representa el número uno.",
+                "plural": "",
+                "hasLocution": true
+            }
+        ],
+        "desc": "",
+        "categories": [
+            "number"
+        ],
+        "violence": false,
+        "hair": false,
+        "skin": true,
+        "aac": false,
+        "aacColor": false
+    },
+    {
+        "_id": 35677,
+        "created": "2019-09-03T11:49:59.000Z",
+        "downloads": 0,
+        "tags": [
+            "communication",
+            "language",
+            "alphabet",
+            "number",
+            "mathematics"
+        ],
+        "synsets": [
+            "13764713-n",
+            "02193977-s"
+        ],
+        "sex": false,
+        "lastUpdated": "2020-06-01T12:12:29.833Z",
+        "schematic": false,
+        "keywords": [
+            {
+                "keyword": "uno",
+                "type": 6,
+                "meaning": " m. Signo con que se representa este número: 1. ",
+                "plural": "",
+                "hasLocution": true
+            },
+            {
+                "keyword": "1",
+                "type": 6,
+                "meaning": "Signo con que se representa el número uno.",
+                "plural": "",
+                "hasLocution": true
+            }
+        ],
+        "desc": "",
+        "categories": [
+            "number"
+        ],
+        "violence": false,
+        "hair": false,
+        "skin": true,
+        "aac": false,
+        "aacColor": false
+    }
+]}
