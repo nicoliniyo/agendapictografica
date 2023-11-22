@@ -7,8 +7,8 @@ import 'package:app/widgets/card_item.dart';
 import 'package:app/widgets/card_small.dart';
 import 'package:flutter/material.dart';
 
-class SearchPage extends StatelessWidget {
-  const SearchPage({super.key, required this.themeManager});
+class SearchScreen extends StatelessWidget {
+  const SearchScreen({super.key, required this.themeManager});
 
   final ThemeManager themeManager;
   
@@ -16,10 +16,12 @@ class SearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
    return Scaffold(
       appBar: AppBar(
-        actions: [Switch(value: themeManager.themeMode == ThemeMode.dark
-        , onChanged: (newValue) {
-          themeManager.toggleTheme(newValue);
-        })],
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search_outlined),
+            onPressed: (){},
+          )
+        ],
       ),
       drawer: const AppDrawer(),
       body: SingleChildScrollView(

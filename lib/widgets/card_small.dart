@@ -3,19 +3,16 @@ import 'package:app/classes/pictogram_utils.dart';
 import 'package:app/classes/string_capitalize_extension.dart';
 import 'package:app/data/pec.dart';
 import 'package:app/models/pictograms.dart';
-import 'package:app/theme/custom_theme.dart';
-import 'package:app/widgets/icons_stacked.dart';
 import 'package:flutter/material.dart';
 
 class CardSmall extends StatelessWidget {
 
-  CardSmall.fromPictogram(Pictograms pictogram){
+  CardSmall.fromPictogram(Pictograms pictogram, {super.key}){
     Pec pecObj = PictogramUtils.toPec(pictogram);
-    print("PEC: " + pecObj.toString());
-    id = pecObj!.id;
-    title = pecObj!.keywords;
-    description = pecObj!.description;
-    imgUrl = PecsUrlBuilder().pictograms(pecObj!.id.toString());
+    id = pecObj.id;
+    title = pecObj.keywords;
+    description = pecObj.description;
+    imgUrl = PecsUrlBuilder().pictograms(pecObj.id.toString());
     tap = (){};
   }
 

@@ -4,14 +4,14 @@ import 'package:app/data/pec.dart';
 import 'package:app/models/pictograms.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class CardItem extends StatelessWidget {
-  CardItem.fromPictogram(Pictograms pictogram){
+  CardItem.fromPictogram(Pictograms pictogram, {super.key}){
     Pec pecObj = PictogramUtils.toPec(pictogram);
-    print("PEC: " + pecObj.toString());
-    id = pecObj!.id;
-    title = pecObj!.keywords;
-    description = pecObj!.description;
-    imgUrl = PecsUrlBuilder().pictograms(pecObj!.id.toString());
+    id = pecObj.id;
+    title = pecObj.keywords;
+    description = pecObj.description;
+    imgUrl = PecsUrlBuilder().pictograms(pecObj.id.toString());
     tap = (){};
   }
   

@@ -6,7 +6,8 @@
 
 import 'dart:io';
 
-import 'package:app/pages/design_system.dart';
+import 'package:app/screens/design_system.dart';
+import 'package:app/screens/search.dart';
 import 'package:app/theme/custom_theme.dart';
 import 'package:app/theme/theme_manager.dart';
 import 'package:flutter/foundation.dart';
@@ -32,12 +33,14 @@ var kDarkColorScheme = ColorScheme.fromSeed(
 
 void main() {
   _enablePlatformOverrideForDesktop();
-  runApp(AgendaPecsApp());
+  runApp(const AgendaPecsApp());
 }
 
 ThemeManager _themeManager = ThemeManager();
 
 class AgendaPecsApp extends StatefulWidget {
+  const AgendaPecsApp({super.key});
+
 
   @override
   _AgendaPecsApp createState() => _AgendaPecsApp();
@@ -75,7 +78,7 @@ class _AgendaPecsApp extends State<AgendaPecsApp> {
 
       theme: lightTheme,
       darkTheme: darkTheme,
-      home: DesignSystem(themeManager: _themeManager),
+      home: SearchScreen(themeManager: _themeManager),
     );
   }
 }

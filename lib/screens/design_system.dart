@@ -25,10 +25,14 @@ class DesignSystem extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        actions: [Switch(value: themeManager.themeMode == ThemeMode.dark
-        , onChanged: (newValue) {
-          themeManager.toggleTheme(newValue);
-        })],
+        actions: [
+          Switch(
+            value: themeManager.themeMode == ThemeMode.dark,
+            onChanged: (newValue) {
+                themeManager.toggleTheme(newValue);
+              }
+            ),
+          ],
       ),
       drawer: const AppDrawer(),
       body: SingleChildScrollView(

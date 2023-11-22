@@ -1,7 +1,6 @@
 
 
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:app/models/pictograms.dart';
 import 'package:http/http.dart' as http;

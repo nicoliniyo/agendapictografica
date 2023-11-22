@@ -1,5 +1,6 @@
-import 'package:app/pages/design_system.dart';
-import 'package:app/pages/search_page.dart';
+import 'package:app/screens/design_system.dart';
+import 'package:app/screens/search.dart';
+import 'package:app/screens/settings.dart';
 import 'package:app/theme/theme_manager.dart';
 import 'package:flutter/material.dart';
 
@@ -65,30 +66,7 @@ class _AppDrawer extends State<AppDrawer> {
                     ],
                   ),
                 ),
-                ListTile(
-                  title: Row(
-                    children: [
-                      const Icon(
-                        Icons.dashboard,
-                        color: ThemeColors.primaryText,
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Text('Components', style: ThemeTextStyle.robotoText),
-                    ],
-                  ),
-                  selected: _selectedIndex == 0,
-                  onTap: () {
-                    _onItemTapped(0);
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (ctx) => DesignSystem(themeManager: _themeManager,),
-                      ),
-                    );
-                  },
-                ),
-                // Add other list items here
+                // Buscar -> SearchScreen
                 ListTile(
                   title: Row(
                     children: [
@@ -107,12 +85,62 @@ class _AppDrawer extends State<AppDrawer> {
                     _onItemTapped(1);
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (ctx) => SearchPage(themeManager: _themeManager,),
+                        builder: (ctx) => SearchScreen(themeManager: _themeManager,),
+                      ),
+                    );
+                  },
+                ),
+                //Ajustes -> SettingsScreen
+                ListTile(
+                  title: Row(
+                    children: [
+                      const Icon(
+                        Icons.settings,
+                        color: ThemeColors.primaryText,
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text('Ajustes', style: ThemeTextStyle.robotoText),
+                    ],
+                  ),
+                  selected: _selectedIndex == 1,
+                  onTap: () {
+                    _onItemTapped(1);
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (ctx) => SettingsScreen(themeManager: _themeManager,),
+                      ),
+                    );
+                  },
+                ),
+                //Components -> DesignSystem
+                ListTile(
+                  title: Row(
+                    children: [
+                      const Icon(
+                        Icons.dashboard,
+                        color: ThemeColors.primaryText,
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text('Componentes', style: ThemeTextStyle.robotoText),
+                    ],
+                  ),
+                  selected: _selectedIndex == 0,
+                  onTap: () {
+                    _onItemTapped(0);
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (ctx) => DesignSystem(themeManager: _themeManager,),
                       ),
                     );
                   },
                 ),
               ],
+
+              
             ),
           ),
           ListTile(
