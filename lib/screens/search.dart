@@ -48,13 +48,15 @@ class _SearchScreen extends State<SearchScreen> {
               height: 40,
               child: TextField(
                 decoration: InputDecoration(
-                    focusedBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(
                           color: Color.fromARGB(255, 80, 79, 79), width: 1.0),
+                          borderRadius: BorderRadius.circular(30.0),
                     ),
-                    enabledBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(
                           color: Color.fromARGB(255, 199, 199, 199), width: 1.0),
+                          borderRadius: BorderRadius.circular(30.0),
                     ),
                     hintText: 'Buscar',
                     hintStyle: Theme.of(context).textTheme.titleSmall,
@@ -66,6 +68,7 @@ class _SearchScreen extends State<SearchScreen> {
                 },
               ),
             ),
+            const SizedBox(height: 16,),
             // TextField(controller: textInputController,),
             FutureBuilder<List<Pictograms>>(
               future: getData(),
@@ -76,8 +79,26 @@ class _SearchScreen extends State<SearchScreen> {
                   );
                 } else if (snapshot.hasData) {
                   return Column(children: [
-                    Text('Encontrados: ' + snapshot.data!.length.toString()),
-                    PictogramsList(pictogram: snapshot.data!),
+                    Text('Encontrados: ${snapshot.data!.length}', style: Theme.of(context).textTheme.labelLarge,),
+                    const SizedBox(height: 16,),
+                    //PictogramsList(pictogram: snapshot.data!),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (context, index) {
+                        print(snapshot.data![index].id.toString());
+                        return Column(children: [
+                          // CardItem.fromPictogram(snapshot.data![index]),
+                          // const SizedBox(
+                          //   height: 16,
+                          // ),
+                          CardSmall.fromPictogram(snapshot.data![index]),
+                          const SizedBox(
+                            height: 16,
+                          ),
+                        ]);
+                      },
+                    ),
                   ]);
                 } else {
                   return const Center(
@@ -97,45 +118,4 @@ Future<List<Pictograms>> getData() {
   var fetchPhotos = PecsImageProvider.fetchPhotos();
   print('FETCHED FOTOS: $fetchPhotos');
   return fetchPhotos;
-}
-
-class PictogramsList extends StatelessWidget {
-  const PictogramsList({super.key, required this.pictogram});
-
-  final List<Pictograms> pictogram;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      itemCount: pictogram.length,
-      itemBuilder: (context, index) {
-        print(pictogram[index].id.toString());
-        return Column(children: [
-          CardItem.fromPictogram(pictogram[index]),
-          const SizedBox(
-            height: 16,
-          ),
-          CardSmall.fromPictogram(pictogram[index]),
-          const SizedBox(
-            height: 16,
-          ),
-        ]);
-      },
-    );
-  }
-}
-
-class TextBox extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.centerLeft,
-      color: Colors.white,
-      child: TextField(
-        decoration:
-            InputDecoration(border: InputBorder.none, hintText: 'Search'),
-      ),
-    );
-  }
 }
