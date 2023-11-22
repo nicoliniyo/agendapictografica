@@ -58,7 +58,8 @@ class _SearchScreen extends State<SearchScreen> {
                     ),
                     hintText: 'Buscar',
                     hintStyle: Theme.of(context).textTheme.titleSmall,
-                    icon: const Icon(Icons.search)),
+                    suffixIcon: const Icon(Icons.search)),
+                    
                 controller: textInputController,
                 onSubmitted: (String value) {
                   debugPrint(value);
