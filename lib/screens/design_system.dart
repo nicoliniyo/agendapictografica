@@ -4,6 +4,7 @@ import 'package:app/models/pictograms.dart';
 import 'package:app/theme/theme_manager.dart';
 import 'package:app/widgets/app_drawer.dart';
 import 'package:app/widgets/card_item.dart';
+import 'package:app/widgets/main_appbar.dart';
 import 'package:flutter/material.dart';
 
 
@@ -34,7 +35,7 @@ class DesignSystem extends StatelessWidget {
             ),
           ],
       ),
-      drawer: const AppDrawer(),
+      drawer: const MainAppDrawer(),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(10),
         child: Column(
@@ -105,25 +106,30 @@ class DesignSystem extends StatelessWidget {
             Text(PecsUrlBuilder().pictograms('6009')),
             Text(PecsUrlBuilder().bestsearch('biberon')),
             const Divider(),
-            FutureBuilder<List<Pictograms>>(
-              future: getData(),
-              builder: (context, snapshot) {
-                if (snapshot.hasError) {
-                  return const Center(
-                    child: Text('An error has occurred!'),
-                  );
-                } else if (snapshot.hasData) {
-                  return Column(children: [
-                      Text('Tamanio: ' + snapshot.data!.length.toString()),
-                      PictogramsList(pictogram: snapshot.data!),
-                    ]);
-                } else {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              },
-            ),
+            SeachField(),
+            
+            
+
+            //Esto esta en buscar SearchScreen
+            // FutureBuilder<List<Pictograms>>(
+            //   future: getData(),
+            //   builder: (context, snapshot) {
+            //     if (snapshot.hasError) {
+            //       return const Center(
+            //         child: Text('An error has occurred!'),
+            //       );
+            //     } else if (snapshot.hasData) {
+            //       return Column(children: [
+            //           Text('Tamanio: ' + snapshot.data!.length.toString()),
+            //           PictogramsList(pictogram: snapshot.data!),
+            //         ]);
+            //     } else {
+            //       return const Center(
+            //         child: CircularProgressIndicator(),
+            //       );
+            //     }
+            //   },
+            // ),
 
             
         ],
@@ -160,4 +166,25 @@ class PictogramsList extends StatelessWidget {
       },
     );
   }
+}
+
+class SeachField extends StatelessWidget {
+  const SeachField({super.key});
+  
+  @override
+  Widget build(BuildContext context) {
+    return  
+              const Expanded(
+               // width: 40,
+                child: Row( children: [
+                  TextField(),
+                  //Spaiconcer(),
+                  Icon(Icons.search),
+                           ]
+                          // )
+                  ),
+              );
+  }
+
+
 }

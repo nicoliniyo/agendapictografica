@@ -9,8 +9,8 @@ import 'build_number.dart';
 
 ThemeManager _themeManager = ThemeManager();
 
-class AppDrawer extends StatefulWidget {
-  const AppDrawer({super.key});
+class MainAppDrawer extends StatefulWidget {
+  const MainAppDrawer({super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -18,7 +18,7 @@ class AppDrawer extends StatefulWidget {
   }
 }
 
-class _AppDrawer extends State<AppDrawer> {
+class _AppDrawer extends State<MainAppDrawer> {
   int _selectedIndex = 0;
   final Widget buildNumber = const BuildNumber();
 
