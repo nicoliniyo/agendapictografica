@@ -11,6 +11,7 @@ import 'package:app/theme/custom_theme.dart';
 import 'package:app/theme/theme_manager.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 
 // Sets a platform override for desktop to avoid exceptions. See
@@ -32,7 +33,12 @@ var kDarkColorScheme = ColorScheme.fromSeed(
 
 void main() {
   _enablePlatformOverrideForDesktop();
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]).then((fn) {
   runApp(const AgendaPecsApp());
+  });
 }
 
 ThemeManager _themeManager = ThemeManager();

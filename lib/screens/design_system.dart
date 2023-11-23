@@ -140,7 +140,7 @@ class DesignSystem extends StatelessWidget {
 }
 
 Future<List<Pictograms>> getData() {
-  var fetchPhotos = PecsImageProvider.fetchPhotos();
+  var fetchPhotos = PecsImageProvider.fetchPhotos('uno');
   print('FETCHED FOTOS: $fetchPhotos');
   return fetchPhotos;
 }

@@ -14,9 +14,9 @@ static List<Pictograms> parsePhotos(String responseBody) {
   return parsed.map<Pictograms>((json) => Pictograms.fromJson(json)).toList();
 }
 
-static Future<List<Pictograms>> fetchPhotos() async {
+static Future<List<Pictograms>> fetchPhotos(String searchTerm) async {
   final response = await 
-      http.get(Uri.parse('https://api.arasaac.org/api/pictograms/es/bestsearch/uno'));
+      http.get(Uri.parse('https://api.arasaac.org/api/pictograms/es/bestsearch/$searchTerm'));
 
   // Use the compute function to run parsePhotos in a separate isolate.
   return parsePhotos(response.body);
