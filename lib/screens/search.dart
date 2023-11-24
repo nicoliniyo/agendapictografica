@@ -21,10 +21,10 @@ class _SearchScreen extends State<SearchScreen> {
   String searchTerm = '' ;
 
   void updateSearchTerm(String term) {
-    print('UPDATE SEARCH TERM: $searchTerm');
+    
     if(term.isNotEmpty){
       setState(() {
-        searchTerm = term;
+        searchTerm = term.trim();
       });
     }
   }
@@ -70,7 +70,7 @@ class _SearchScreen extends State<SearchScreen> {
                           width: 1.0),
                       borderRadius: BorderRadius.circular(30.0),
                     ),
-                    hintText: 'Buscar',
+                    hintText: 'Buscar pictogramas',
                     hintStyle: Theme.of(context).textTheme.titleSmall,
                     suffixIcon: const Icon(Icons.search)),
                     
@@ -90,13 +90,13 @@ class _SearchScreen extends State<SearchScreen> {
               builder: (context, snapshot) {
                 if(searchTerm.isEmpty) {
                   return const Center(
-                    child: Text('Search PECS!'),
+                    child: Text('Busquedas previas'),
                   );
                 }
                 if (snapshot.hasError) {
                   print(snapshot.hasError);
                   return const Center(
-                    child: Text('An error has occurred!'),
+                    child: Text('Error inesperado!'),
                   );
                 } else if (snapshot.hasData) {
                   return Column(children: [
@@ -140,6 +140,6 @@ class _SearchScreen extends State<SearchScreen> {
 
 Future<List<Pictograms>> getData(String searchTerm) {
   var fetchPhotos = PecsImageProvider.fetchPhotos(searchTerm);
-  print('FETCHED FOTOS: $fetchPhotos');
+  
   return fetchPhotos;
 }

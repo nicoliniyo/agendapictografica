@@ -1,3 +1,4 @@
+import 'package:app/classes/local_storage.dart';
 import 'package:app/classes/pecs_url_builder.dart';
 import 'package:app/classes/pictogram_utils.dart';
 import 'package:app/classes/string_capitalize_extension.dart';
@@ -31,12 +32,18 @@ class CardSmall extends StatelessWidget {
   String? imgUrl;
   Function? tap;
   String? title;
-
-
+  
+  //final void Function(String identifier) 
+  void _saveToFile(String imgUrl, String id)  {
+    var copyImageToLocal = LocalStorage().copyImageToLocal(imgUrl, id);
+    debugPrint("SAVE_TO_FILE: $copyImageToLocal");
+  }
  
 
   @override
   Widget build(BuildContext context) {
+    var imageFromUrl = Image.network(imgUrl!, width: 150,);
+    
     return Card(
               child: Padding(
                 padding: const EdgeInsets.symmetric(
@@ -70,11 +77,7 @@ class CardSmall extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Image.network(
-                                // 'https://api.arasaac.org/v1/pictograms/6009?url=false&download=false',
-                                imgUrl!,
-                                width: 150,
-                              ),
+                              imageFromUrl,
                               Text(
                                 title!.capitalize(),
                                 style: Theme.of(context).textTheme.titleSmall,
@@ -85,22 +88,25 @@ class CardSmall extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 4),
-                    const Row(
+                    Row(
                       children: [
                         Row(
                           children: [
-                            Icon(Icons.image_outlined),
-                            SizedBox(width: 8),
-                            Icon(Icons.check_circle_outline_outlined),
+                            // Icon(Icons.image_outlined),
+                            // SizedBox(width: 8),
+                            // Icon(Icons.check_circle_outline_outlined),
                             //IconsStacked(main: Icons.image_outlined, helper: Icons.check_circle_rounded),
-                            SizedBox(width: 8),
-                            Icon(Icons.cloud_download_outlined),
+                            // SizedBox(width: 8),
+                            IconButton(
+                                icon: const Icon(Icons.cloud_download_outlined),
+                                onPressed: () => _saveToFile(imgUrl!, id!.toString()),
+                              ),
                             SizedBox(width: 8),
                             Icon(Icons.delete_outline_outlined),
                           ],
                         ),
-                        Spacer(),
-                        Row(
+                        const Spacer(),
+                        const Row(
                           children: [
                             Icon(Icons.list_outlined),
                                                         

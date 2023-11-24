@@ -133,7 +133,7 @@ class _AppDrawer extends State<MainAppDrawer> {
                     _onItemTapped(0);
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (ctx) => DesignSystem(themeManager: _themeManager,),
+                        builder: (ctx) => DesignSystem(),
                       ),
                     );
                   },
