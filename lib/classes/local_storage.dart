@@ -33,6 +33,16 @@ class LocalStorage {
     );
   }
 
-  
+  Future<List<File>> listPngFiles() async {
+    List<File> pngFiles = [];
+    final documentDirectory = await syspaths.getApplicationDocumentsDirectory();
+    
+      return pngFiles = documentDirectory
+          .listSync()
+          .where((file) => file is File && file.path.endsWith('.png'))
+          .toList()
+          .cast<File>();
+    
+  }
 
 }

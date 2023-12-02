@@ -80,7 +80,7 @@ class _AgendaPecsApp extends State<AgendaPecsApp> {
     return MaterialApp(
       title: 'Agenda PECS',
       
-      themeMode: _themeManager.themeMode,
+      themeMode: ThemeMode.light,
 
       theme: lightTheme,
       darkTheme: darkTheme,

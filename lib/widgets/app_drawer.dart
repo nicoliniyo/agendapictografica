@@ -1,3 +1,4 @@
+import 'package:app/screens/activities.dart';
 import 'package:app/screens/design_system.dart';
 import 'package:app/screens/search.dart';
 import 'package:app/screens/settings.dart';
@@ -104,12 +105,36 @@ class _AppDrawer extends State<MainAppDrawer> {
                       Text('Ajustes', style: ThemeTextStyle.robotoText),
                     ],
                   ),
-                  selected: _selectedIndex == 1,
+                  selected: _selectedIndex == 2,
                   onTap: () {
-                    _onItemTapped(1);
+                    _onItemTapped(2);
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (ctx) => SettingsScreen(themeManager: _themeManager,),
+                      ),
+                    );
+                  },
+                ),
+                 // Activities
+                 ListTile(
+                  title: Row(
+                    children: [
+                      const Icon(
+                        Icons.local_activity,
+                        color: ThemeColors.primaryText,
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text('Actividades', style: ThemeTextStyle.robotoText),
+                    ],
+                  ),
+                  selected: _selectedIndex == 3,
+                  onTap: () {
+                    _onItemTapped(3);
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (ctx) => const Activities(),
                       ),
                     );
                   },
@@ -130,7 +155,7 @@ class _AppDrawer extends State<MainAppDrawer> {
                   ),
                   selected: _selectedIndex == 0,
                   onTap: () {
-                    _onItemTapped(0);
+                    _onItemTapped(4);
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (ctx) => DesignSystem(),
