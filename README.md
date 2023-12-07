@@ -4,7 +4,7 @@ This project involves developing a picture exchange aimed at creating an applica
 
 ## Getting Started
 
-This is FOSS project
+This is FOSS project, it's free
 
 For help getting started with AgendaPecs project, view the
 [online documentation](https://nicoliniyo.github.io/agendapecs/), which offers design,
