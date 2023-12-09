@@ -48,6 +48,7 @@ dependencies:
   http: ^1.1.0
   path_provider: ^2.1.1
   path: ^1.8.3
+  uuid: ^4.2.1
 
 flutter_icons:
   android: true
@@ -79,6 +80,7 @@ flutter:
   assets:
     - assets/img/splash.jpg
     - assets/img/nicapps-logo.png
+    - assets/img/blank.png
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

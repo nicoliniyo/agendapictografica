@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:app/classes/pecs_url_builder.dart';
 import 'package:app/classes/pictogram_utils.dart';
 import 'package:app/models/pictograms.dart';
+import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart' as syspaths;
 
@@ -43,6 +44,16 @@ class LocalStorage {
           .toList()
           .cast<File>();
     
+  }
+
+  Future<File> getImageFileFromAssets(String path) async {
+    final byteData = await rootBundle.load(path);
+
+    final file = File('${(await syspaths.getApplicationDocumentsDirectory()).path}/$path');
+    await file.create(recursive: true);
+    await file.writeAsBytes(byteData.buffer.asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
+
+    return file.absolute;
   }
 
 }

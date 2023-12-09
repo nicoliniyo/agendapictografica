@@ -109,6 +109,7 @@ class _SearchScreen extends State<SearchScreen> {
                     ),
 
                     ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: snapshot.data!.length,
                         itemBuilder: (context, index) {

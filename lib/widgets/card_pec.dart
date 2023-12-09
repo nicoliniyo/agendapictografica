@@ -1,16 +1,17 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 // ignore: must_be_immutable
 class CardPec extends StatelessWidget {
-  // CardPec.fromPictogram(Pictograms pictogram, {super.key}){
-  //   Pec pecObj = PictogramUtils.toPec(pictogram);
-  //   id = pecObj.id;
-  //   title = pecObj.keywords;
-  //   description = pecObj.description;
-  //   imgUrl = PecsUrlBuilder().pictograms(pecObj.id.toString());
-  //   tap = (){};
+  // CardPec.blank(bool blank, {super.key}){
+  //   // Pec pecObj = PictogramUtils.toPec(pictogram);
+  //   // id = pecObj.id;
+  //    title = '';
+  //   // description = pecObj.description;
+  //    imgFile = Image.file(rootBundle.load('assets/img/blank.png'));
+  //   // tap = (){};
   // }
   
   CardPec(
@@ -29,18 +30,21 @@ class CardPec extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return SizedBox(
+      width: 140,
+      height: 160,
+        child:
+        Card(
               child: Padding(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 8,
+                  horizontal: 5,
+                  vertical: 5,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       children: [
-                       
                         Expanded(
                           flex: 1,
                           child: 
@@ -51,28 +55,15 @@ class CardPec extends StatelessWidget {
                              Image.file(imgFile),
                             //  Text('title'),
                              Text(title),
-                              
                             ],
                           ),
                         ),
-                        // const Expanded(
-                        //   flex: 1,
-                        //   child: 
-                        //   Row(
-                        //   children: [
-                        //     Spacer(),
-                        //     Icon(Icons.list_outlined),               
-                        //     SizedBox(width: 8),
-                        //     Icon(Icons.star_border_outlined),
-                            
-                        //   ],
-                        // ),
-                        // )
                       ],
                     ),
                   ],
                 ),
               ),
-            );
+            )
+    );
   }
 }
