@@ -11,10 +11,10 @@ class PictogramUtils {
     String meaningsAsStr;
     for (var keywordData in pictogram.keywords) {
       String keyword = keywordData['keyword'];
-      String meaning = keywordData['meaning'];
+      String meaning = keywordData['meaning']?? '-';
       
-      extractedKeywords.add(keyword);
-      extractedMeanings.add(meaning);
+      extractedKeywords.add(keyword.trim().replaceAll(',', ''));
+      extractedMeanings.add(meaning.trim().replaceAll(',', ''));
     }
     kwordsAsStr = extractedKeywords.join(',');
     meaningsAsStr = extractedMeanings.join(',');

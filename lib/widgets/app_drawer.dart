@@ -1,5 +1,6 @@
 import 'package:app/screens/activities.dart';
 import 'package:app/screens/design_system.dart';
+import 'package:app/screens/local_pecs.dart';
 import 'package:app/screens/search.dart';
 import 'package:app/screens/settings.dart';
 import 'package:app/theme/theme_manager.dart';
@@ -67,7 +68,7 @@ class _AppDrawer extends State<MainAppDrawer> {
                     ],
                   ),
                 ),
-                // Buscar -> SearchScreen
+                // Local Pecs -> SearchScreen
                 ListTile(
                   title: Row(
                     children: [
@@ -78,7 +79,31 @@ class _AppDrawer extends State<MainAppDrawer> {
                       const SizedBox(
                         width: 10,
                       ),
-                      Text('Buscar', style: ThemeTextStyle.robotoText),
+                      Text('Catalogo de Pecs', style: ThemeTextStyle.robotoText),
+                    ],
+                  ),
+                  selected: _selectedIndex == 1,
+                  onTap: () {
+                    _onItemTapped(1);
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (ctx) => LocalPecs(),
+                      ),
+                    );
+                  },
+                ),
+                // Buscar -> SearchScreen
+                ListTile(
+                  title: Row(
+                    children: [
+                      const Icon(
+                        Icons.download,
+                        color: ThemeColors.primaryText,
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text('Descargar Pecs', style: ThemeTextStyle.robotoText),
                     ],
                   ),
                   selected: _selectedIndex == 1,
@@ -87,6 +112,31 @@ class _AppDrawer extends State<MainAppDrawer> {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (ctx) => SearchScreen(themeManager: _themeManager,),
+                      ),
+                    );
+                  },
+                ),
+
+                 // Activities
+                 ListTile(
+                  title: Row(
+                    children: [
+                      const Icon(
+                        Icons.local_activity,
+                        color: ThemeColors.primaryText,
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text('Actividades', style: ThemeTextStyle.robotoText),
+                    ],
+                  ),
+                  selected: _selectedIndex == 3,
+                  onTap: () {
+                    _onItemTapped(3);
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (ctx) => const Activities(),
                       ),
                     );
                   },
@@ -111,30 +161,6 @@ class _AppDrawer extends State<MainAppDrawer> {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (ctx) => SettingsScreen(themeManager: _themeManager,),
-                      ),
-                    );
-                  },
-                ),
-                 // Activities
-                 ListTile(
-                  title: Row(
-                    children: [
-                      const Icon(
-                        Icons.local_activity,
-                        color: ThemeColors.primaryText,
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Text('Actividades', style: ThemeTextStyle.robotoText),
-                    ],
-                  ),
-                  selected: _selectedIndex == 3,
-                  onTap: () {
-                    _onItemTapped(3);
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (ctx) => const Activities(),
                       ),
                     );
                   },

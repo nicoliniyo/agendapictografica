@@ -1,8 +1,12 @@
+import 'dart:io';
+
+import 'package:app/classes/local_storage.dart';
 import 'package:app/classes/pecs_image_provider.dart';
 import 'package:app/models/pictograms.dart';
 import 'package:app/theme/theme_manager.dart';
 import 'package:app/widgets/app_drawer.dart';
 import 'package:app/widgets/card_small.dart';
+import 'package:app/widgets/list_pecs.dart';
 import 'package:flutter/material.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -57,6 +61,7 @@ class _SearchScreen extends State<SearchScreen> {
               height: 40,
               width: MediaQuery.of(context).size.width - 30,
               child: TextField(
+                cursorHeight: 20,
                 textInputAction: TextInputAction.search,
                 decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
@@ -94,7 +99,7 @@ class _SearchScreen extends State<SearchScreen> {
                   );
                 }
                 if (snapshot.hasError) {
-                  print(snapshot.hasError);
+                  print('ERROR: $snapshot.error');
                   return const Center(
                     child: Text('Error inesperado!'),
                   );
@@ -141,6 +146,6 @@ class _SearchScreen extends State<SearchScreen> {
 
 Future<List<Pictograms>> getData(String searchTerm) {
   var fetchPhotos = PecsImageProvider.fetchPhotos(searchTerm);
-  
+  print('Catalog: ${fetchPhotos.toString()}');
   return fetchPhotos;
 }

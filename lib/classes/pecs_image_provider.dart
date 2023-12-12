@@ -16,7 +16,7 @@ static List<Pictograms> parsePhotos(String responseBody) {
 
 static Future<List<Pictograms>> fetchPhotos(String searchTerm) async {
   final response = await 
-      http.get(Uri.parse('https://api.arasaac.org/api/pictograms/es/bestsearch/$searchTerm'));
+      http.get(Uri.parse('https://api.arasaac.org/api/pictograms/es/search/$searchTerm'));
 
   // Use the compute function to run parsePhotos in a separate isolate.
   return parsePhotos(response.body);

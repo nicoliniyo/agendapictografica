@@ -11,9 +11,9 @@ class Pictograms {
   final String lastUpdated; //	String($date-time)
   final int downloads;
   final dynamic categories;
-  final dynamic synsets;
+  //final dynamic synsets;
   final dynamic tags;
-  final String desc	;
+  //final String desc	;
 
   const Pictograms({
     required this.id,
@@ -25,13 +25,13 @@ class Pictograms {
     required this.lastUpdated,
     required this.downloads,
     required this.categories,
-    required this.synsets,
+    //required this.synsets,
     required this.tags,
-    required this.desc
+    //required this.desc
   });
 
   factory Pictograms.fromJson(Map<String, dynamic> json) {
-    
+    print('JSON $json');
     return Pictograms(
       id: json['_id'] as int,
       keywords: json['keywords'] as List<dynamic>,
@@ -42,9 +42,9 @@ class Pictograms {
       lastUpdated: json['lastUpdated'] as String,
       downloads: json['downloads'] as int,
       categories: json['categories'] as dynamic,
-      synsets: json['synsets'] as dynamic,
+      //synsets: json['synsets'] as dynamic,
       tags: json['tags'] as dynamic,
-      desc: json['desc'] as String, 
+      //desc: json['desc'] as String,
     );
   }
 
