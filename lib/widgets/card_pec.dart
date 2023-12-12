@@ -30,40 +30,44 @@ class CardPec extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 140,
-      height: 160,
+    return
+      Container(
+
+       width: 110,
+      height: 110,
         child:
         Card(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 5,
-                  vertical: 5,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: 
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                             Image.file(imgFile),
+              // child: Padding(
+              //   padding: const EdgeInsets.symmetric(
+              //     horizontal: 10,
+              //     vertical: 10,
+              //   ),
+                // child: Column(
+                //   crossAxisAlignment: CrossAxisAlignment.start,
+                //   children: [
+                //     child: Row(
+                //       children: [
+                //         child : Expanded(
+                //           flex: 1,
+                        //   child:
+                          //Column(
+
+                            // mainAxisAlignment: MainAxisAlignment.center,
+                            // crossAxisAlignment: CrossAxisAlignment.center,
+                            // children: [
+                             child: Image.file(imgFile, ),
                             //  Text('title'),
-                             Text(title),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            )
+                             //Text(title),
+                            // ],
+                          // ),
+                        // ),
+                      // ],
+                    // ),
+                    //SizedBox(height: 10,)
+                  // ],
+                // ),
+              // ),
+            ),
     );
   }
 }

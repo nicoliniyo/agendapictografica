@@ -19,15 +19,25 @@ class Activities extends StatefulWidget {
 
 class _Activities extends State<Activities> {
   bool variablesUpdated = false;
-  late CardPec blankPec;
+  late Widget blankPec ; //= sizedBoxBlank();
+  late Widget blankPec2 ; //= sizedBoxBlank();
   List<File> column1Items = List.empty(growable: true);
-  List<CardPec> column2Items = List.empty(growable: true);
+  List<CardPec> column2Items = [];
   List<int> column3Items = List.generate(3, (index) => (index + 1) * 3);
 
-
+  Widget sizedBoxBlank() {
+    return Container(
+            width: 100,
+            decoration: new BoxDecoration(
+              borderRadius: new BorderRadius.circular(16.0),
+              color: Colors.black12,
+            ),
+    );
+  }
   loadBlankPec() async {
     var file = await LocalStorage().getImageFileFromAssets('assets/img/blank.png');
     blankPec = CardPec(title: '', imgFile: file);
+    blankPec2 = CardPec(title: '', imgFile: file);
     // column2Items.add(blankPec);
     // column2Items.add(blankPec);
     // column2Items.add(blankPec);
@@ -59,8 +69,7 @@ class _Activities extends State<Activities> {
 
   @override
   Widget build(BuildContext context)  {
-    bool isAccepted = false;
-
+    
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -76,88 +85,99 @@ class _Activities extends State<Activities> {
       ),
       drawer: const MainAppDrawer(),
       //body: const IndependentScrollableColumns(),
-      body:
-            Row(
+      body: Container(
+        padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+            child: Row(
+
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Expanded(
-                  child: ReorderableListView.builder(
+                Container( width: 140,
+                  //flex: 1,
+                  child:
+                  ListView.builder(
                     itemCount: column1Items.length,
                     itemBuilder: (BuildContext context, int index) {
                       String titleFile = column1Items[index].path.split('/').last;
                       File itemFile = column1Items[index];
                       print(titleFile + ' -> ' + itemFile.path);
-
+                      var internalCard = CardPec(title: titleFile, imgFile: itemFile);
                       // Wrap the CardPec with Draggable
-                      return Draggable(
-                        key: ValueKey(column1Items[index]),
-                        //axis: Axis.horizontal,
-                        feedback: CardPec(title: titleFile, imgFile: itemFile),
-                        child:
-                            CardPec(title: titleFile, imgFile: itemFile),
-
-
-                        childWhenDragging: Opacity(
-                          opacity: 0.5,
-                          child: CardPec(title: titleFile, imgFile: itemFile),
+                      return
+                        Container(
+                        width: 100,
+                        height: 100,
+                        //key: ValueKey(column1Items[index]),
+                          child : Draggable<CardPec>(
+                            key: ValueKey(column1Items[index]),
+                            //axis: Axis.horizontal,
+                            feedback: internalCard,
+                            child: internalCard,
+                            childWhenDragging: Opacity(
+                              opacity: 0.5,
+                              child: internalCard,
+                            ),
+                            // Widget when dragging
+                            data: internalCard, // Data to identify the item
                         ),
-                        // Widget when dragging
-                        data: CardPec(title: titleFile, imgFile: itemFile), // Data to identify the item
                       );
                     },
-                    onReorder: (oldIndex, newIndex) {
-                      setState(() {
-                        if (newIndex > oldIndex) {
-                          newIndex -= 1;
-                        }
-                        final File item = column1Items.removeAt(oldIndex);
-                        column1Items.insert(newIndex, item);
-                      });
-                    },
+                    // onReorder: (oldIndex, newIndex) {
+                    //   setState(() {
+                    //     if (newIndex > oldIndex) {
+                    //       newIndex -= 1;
+                    //     }
+                    //     final File item = column1Items.removeAt(oldIndex);
+                    //     column1Items.insert(newIndex, item);
+                    //   });
+                    // },
                   ),
                 ),
-                // Expanded(
-                //   child:
+                SizedBox(width: 50,),
+                Expanded(
+                  flex: 1,
+                  child:
                   Column(
+                    // crossAxisAlignment: CrossAxisAlignment.center,
+                    // mainAxisAlignment: MainAxisAlignment.start,
                     children: [
+                      //blankPec,
                       DragTarget<CardPec>(
-                        onWillAccept: (cardPec) {
-                          print("WILL ACCEPT " + (cardPec != null).toString());
-                          isAccepted = (cardPec != null);
-                          return cardPec != null;
-                        },
+                          builder: (BuildContext context, List<CardPec?> candidateData, List<dynamic> rejectedData) {
+                            return Row(
+
+                              children: [
+                                // Text('grad her!'),
+                                blankPec,
+                                // Text('grad her!'),
+                                //(candidateData.first! != null ? candidateData.first! : blankPec),
+                              ],
+                            );
+                          },
+                        onWillAccept: (cardPec) =>true,
                         onAccept: (CardPec cardPec) {
                           print("OnAccept!");
-                          //isAccepted = true;
+                          blankPec = cardPec;
                         },
+                      ),
+                      SizedBox(height: 10,),
+                      DragTarget<CardPec>(
                         builder: (BuildContext context, List<CardPec?> candidateData, List<dynamic> rejectedData) {
-                          print("IS ACCEPTED: $isAccepted");
-                          return isAccepted
-                              ? Container(
-                            width: 100,
-                            height: 100,
-                            child:
-                              Expanded(
-                                flex: 1,
-                                child: Column( children: [
-                                candidateData.first!,
-                                  ]
-                                ),
-                              ),
-
-                          )
-
-                              : SizedBox(
-                              width: 150,
-                              height: 150,
-                              child: Material(
-                                shape: StadiumBorder(),
-                                color: Colors.yellow,
-                                  )
-                              );
-
-                        }),
+                          return Row(
+                            children: [
+                              blankPec2
+                              //(candidateData.first! != null ? candidateData.first! : blankPec),
+                            ],
+                          );
+                        },
+                        onWillAccept: (cardPec) =>true,
+                        onAccept: (CardPec cardPec) {
+                          print("OnAccept!");
+                          blankPec2 = cardPec;
+                        },
+                      ),
                     ],
                   ),
+                ),
                   // child: ReorderableListView.builder(
                   //   itemCount: 1,
                   //   // Add 1 for the potential dropped item
@@ -179,77 +199,34 @@ class _Activities extends State<Activities> {
                   //   },
                   // ),
                 // ),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: column3Items.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return ListTile(
-                        title: Text('Column 3 Item ${column3Items[index]}'),
-                      );
-                    },
-                  ),
-                ),
+
+
+
+                // Expanded(
+                //   flex: 1,
+                //   child:
+                //   ListView.builder(
+                //     itemCount: column3Items.length,
+                //     itemBuilder: (BuildContext context, int index) {
+                //       return ListTile(
+                //         title: Container(
+                //           width: 100,
+                //           height: 100,
+                //           decoration: new BoxDecoration(
+                //             borderRadius: new BorderRadius.circular(16.0),
+                //             color: Colors.black12,
+                //           ),
+                //
+                //             child: Center(
+                //               child: Text('Column 3 Item ${column3Items[index]}'),),
+                //           ),
+                //       );
+                //     },
+                //   ),
+                // ),
               ],
             ),
-
-    );
-  }
-}
-
-
-class IndependentScrollableColumns extends StatelessWidget {
-  const IndependentScrollableColumns({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverToBoxAdapter(
-          child: Container(
-            height: 200, // Adjust the height as needed
-            child: Scrollbar(
-              child: ListView.builder(
-                itemCount: 50,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text('Column 1 Item $index'),
-                  );
-                },
-              ),
-            ),
-          ),
-        ),
-        SliverToBoxAdapter(
-          child: Container(
-            height: 200, // Adjust the height as needed
-            child: Scrollbar(
-              child: ListView.builder(
-                itemCount: 50,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text('Column 2 Item $index'),
-                  );
-                },
-              ),
-            ),
-          ),
-        ),
-        SliverToBoxAdapter(
-          child: Container(
-            height: 200, // Adjust the height as needed
-            child: Scrollbar(
-              child: ListView.builder(
-                itemCount: 50,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text('Column 3 Item $index'),
-                  );
-                },
-              ),
-            ),
-          ),
-        ),
-      ],
+      ),
     );
   }
 }
