@@ -1,6 +1,5 @@
 import 'dart:io';
 
-
 import 'package:app/classes/local_storage.dart';
 import 'package:app/widgets/app_drawer.dart';
 import 'package:app/widgets/card_pec.dart';
@@ -14,13 +13,12 @@ class LocalPecs extends StatefulWidget {
   State<LocalPecs> createState() {
     return _LocalPecs();
   }
-
 }
 
 class _LocalPecs extends State<LocalPecs> {
   bool variablesUpdated = false;
-  late Widget blankPec ; //= sizedBoxBlank();
-  late Widget blankPec2 ; //= sizedBoxBlank();
+  late Widget blankPec; //= sizedBoxBlank();
+  late Widget blankPec2; //= sizedBoxBlank();
   List<File> column1Items = List.empty(growable: true);
 
   Widget sizedBoxBlank() {
@@ -35,23 +33,35 @@ class _LocalPecs extends State<LocalPecs> {
 
   updateCatalog() async {
     column1Items = await LocalStorage().listPngFiles();
-    setState(() {
-
-    });
-
+    setState(() {});
   }
 
   @override
   void initState() {
     super.initState();
-    if(!variablesUpdated){
+    if (!variablesUpdated) {
       updateCatalog();
     }
+  }
 
+  List<Stack> toGrid() {
+    var list = column1Items.map((pec) {
+      String titleFile = pec.path.split('/').last;
+      File itemFile = pec;
+      print(titleFile + ' -> ' + itemFile.path);
+      var internalCard = CardPec(title: titleFile, imgFile: itemFile);
+      return Stack(
+          alignment: Alignment.bottomCenter, children: [
+        internalCard,
+        Text('$titleFile'),
+        //SizedBox(height: 10,)
+      ]);
+    }).toList();
+    return list;
   }
 
   @override
-  Widget build(BuildContext context)  {
+  Widget build(BuildContext context) {
     bool showPecsLane = true;
 
     return Scaffold(
@@ -73,40 +83,52 @@ class _LocalPecs extends State<LocalPecs> {
       ),
       drawer: const MainAppDrawer(),
       //body: const IndependentScrollableColumns(),
-      body: Container(
-        padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-        child: Row(
-
-          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-
-            Container(
-              width: 100,
-              //flex: 1,
-              child:
-              ListView.builder(
-                itemCount: column1Items.length,
-                itemBuilder: (BuildContext context, int index) {
-                  String titleFile = column1Items[index].path.split('/').last;
-                  File itemFile = column1Items[index];
-                  print(titleFile + ' -> ' + itemFile.path);
-                  var internalCard = CardPec(title: titleFile, imgFile: itemFile);
-                  // Wrap the CardPec with Draggable
-                  return Column( children:
-                    [
-                      Text('$titleFile'),
-                      internalCard,
-                      SizedBox(height: 10,)
-                    ]
-                  );
-                },
-              ),
-            ),
-
-
-          ],
+      body: GridView(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          childAspectRatio: 1,
+          crossAxisSpacing: 5,
+          mainAxisSpacing: 10,
         ),
+        children: [
+          ...toGrid(),
+        ],
       ),
+
+      // Container(
+      //   padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+      // child: Row(
+      //
+      //   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //   children: [
+      //
+      //     Container(
+      //       width: 100,
+      //       //flex: 1,
+      //       child:
+      //       ListView.builder(
+      //         itemCount: column1Items.length,
+      //         itemBuilder: (BuildContext context, int index) {
+      //           String titleFile = column1Items[index].path.split('/').last;
+      //           File itemFile = column1Items[index];
+      //           print(titleFile + ' -> ' + itemFile.path);
+      //           var internalCard = CardPec(title: titleFile, imgFile: itemFile);
+      //           // Wrap the CardPec with Draggable
+      //           return Column( children:
+      //             [
+      //               Text('$titleFile'),
+      //               internalCard,
+      //               SizedBox(height: 10,)
+      //             ]
+      //           );
+      //         },
+      //       ),
+      //     ),
+      //
+      //
+      //   ],
+      // ),
+      // ),
     );
   }
 }

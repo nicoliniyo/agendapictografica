@@ -107,11 +107,11 @@ class _Activities extends State<Activities> {
               // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  width: 120,
+                  width: 150,
                   //flex: 1,
                   child:
                   ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
+                    //physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: column1Items.length,
                     itemBuilder: (BuildContext context, int index) {
@@ -119,9 +119,19 @@ class _Activities extends State<Activities> {
                       File itemFile = column1Items[index];
                       print(titleFile + ' -> ' + itemFile.path);
                       var internalCard = CardPec(title: titleFile, imgFile: itemFile);
+                      var stackCard = Stack(
+                        alignment: Alignment.bottomCenter,
+                          children: [
+                            Text(titleFile),
+                            CardPec(title: titleFile, imgFile: itemFile)
+                          ],
+                      );
+
+
                       var expandedCard = Expanded(
                          flex: 1,
-                         child: CardPec(title: titleFile, imgFile: itemFile),
+                         //child: CardPec(title: titleFile, imgFile: itemFile),
+                         child: stackCard
                        );
                       // Wrap the CardPec with Draggable
                       var item = Column(
@@ -131,6 +141,7 @@ class _Activities extends State<Activities> {
                       ],);
                       return
                         SizedBox(
+
                         width: 100,
                         height: 100,
                         //key: ValueKey(column1Items[index]),

@@ -49,14 +49,15 @@ class CardPec extends StatelessWidget {
                 //       children: [
                 //         child : Expanded(
                 //           flex: 1,
-                        //   child:
+                          child:
                           //Column(
 
                             // mainAxisAlignment: MainAxisAlignment.center,
                             // crossAxisAlignment: CrossAxisAlignment.center,
                             // children: [
-                             child: Image.file(imgFile, ),
-                            //  Text('title'),
+                             // child:
+                            Image.file(imgFile, ),
+                             // Text(title),
                              //Text(title),
                             // ],
                           // ),
