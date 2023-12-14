@@ -1,25 +1,27 @@
 import 'dart:io';
 
+import 'package:app/classes/database_provider.dart';
 import 'package:app/classes/local_storage.dart';
+import 'package:app/data/pec.dart';
 import 'package:app/widgets/app_drawer.dart';
 import 'package:app/widgets/card_pec.dart';
 import 'package:app/widgets/list_droppable_pecs.dart';
 import 'package:flutter/material.dart';
 
-class LocalPecs extends StatefulWidget {
-  const LocalPecs({super.key});
+class CatalogPecs extends StatefulWidget {
+  const CatalogPecs({super.key});
 
   @override
-  State<LocalPecs> createState() {
-    return _LocalPecs();
+  State<CatalogPecs> createState() {
+    return _CatalogPecs();
   }
 }
 
-class _LocalPecs extends State<LocalPecs> {
+class _CatalogPecs extends State<CatalogPecs> {
   bool variablesUpdated = false;
   late Widget blankPec; //= sizedBoxBlank();
   late Widget blankPec2; //= sizedBoxBlank();
-  List<File> column1Items = List.empty(growable: true);
+  List<Pec> column1Items = List.empty(growable: true);
 
   Widget sizedBoxBlank() {
     return Container(
@@ -32,7 +34,7 @@ class _LocalPecs extends State<LocalPecs> {
   }
 
   updateCatalog() async {
-    column1Items = await LocalStorage().listPngFiles();
+    await DatabaseProvider().loadPecs().then((value) => column1Items = value);
     setState(() {});
   }
 
@@ -46,9 +48,9 @@ class _LocalPecs extends State<LocalPecs> {
 
   List<Stack> toGrid() {
     var list = column1Items.map((pec) {
-      String titleFile = pec.path.split('/').last;
-      File itemFile = pec;
-      print(titleFile + ' -> ' + itemFile.path);
+      String? titleFile = pec.keywords;
+      File itemFile = File(pec.localImgPath!);
+      print(titleFile! + ' -> ' + itemFile.path);
       var internalCard = CardPec(title: titleFile, imgFile: itemFile);
       return Stack(
           alignment: Alignment.bottomCenter, children: [
@@ -67,7 +69,7 @@ class _LocalPecs extends State<LocalPecs> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Catalogo Pecs (${column1Items.length})',
+          'Catalogo de Pecs (${column1Items.length})',
           style: Theme.of(context).textTheme.titleMedium,
         ),
         actions: [

@@ -41,24 +41,13 @@ class _Activities extends State<Activities> {
     );
   }
   loadBlankPec() async {
-    var file = await LocalStorage().getImageFileFromAssets('assets/img/blank.png');
-    var cardPec = CardPec(title: '', imgFile: file);
+    var cardPec = CardPec.blank(true);
     blankPec = cardPec;
     blankPec2 = cardPec;
     blankPec3 = cardPec;
     blankPec4 = cardPec;
     blankPec5 = cardPec;
     blankPec6 = cardPec;
-    // column2Items.add(blankPec);
-    // column2Items.add(blankPec);
-    // column2Items.add(blankPec);
-    // column2Items.add(blankPec);
-    // column2Items.add(blankPec);
-    // column2Items.add(blankPec);
-    // column2Items.add(blankPec);
-    // column2Items.add(blankPec);
-    // column2Items.add(blankPec);
-    // column2Items.add(blankPec);
 
   }
   updateCatalog() async {

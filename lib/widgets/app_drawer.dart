@@ -1,7 +1,6 @@
 import 'package:app/screens/activities.dart';
-import 'package:app/screens/db_pecs.dart';
+import 'package:app/screens/catalog_pecs.dart';
 import 'package:app/screens/design_system.dart';
-import 'package:app/screens/local_pecs.dart';
 import 'package:app/screens/search.dart';
 import 'package:app/screens/settings.dart';
 import 'package:app/theme/theme_manager.dart';
@@ -80,7 +79,7 @@ class _AppDrawer extends State<MainAppDrawer> {
                       const SizedBox(
                         width: 10,
                       ),
-                      Text('DB de Pecs', style: ThemeTextStyle.robotoText),
+                      Text('Catalogo Pecs', style: ThemeTextStyle.robotoText),
                     ],
                   ),
                   selected: _selectedIndex == 1,
@@ -88,31 +87,7 @@ class _AppDrawer extends State<MainAppDrawer> {
                     _onItemTapped(1);
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (ctx) => const DbPecs(),
-                      ),
-                    );
-                  },
-                ),
-                // Local Pecs -> SearchScreen
-                ListTile(
-                  title: Row(
-                    children: [
-                      const Icon(
-                        Icons.search_outlined,
-                        color: ThemeColors.primaryText,
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Text('Catalogo de Pecs', style: ThemeTextStyle.robotoText),
-                    ],
-                  ),
-                  selected: _selectedIndex == 1,
-                  onTap: () {
-                    _onItemTapped(1);
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (ctx) => LocalPecs(),
+                        builder: (ctx) => const CatalogPecs(),
                       ),
                     );
                   },
