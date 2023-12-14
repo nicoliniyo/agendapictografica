@@ -21,7 +21,12 @@ class DatabaseProvider {
                 'creation INTEGER,'
                 'imgUrl TEXT,'
                 'localImgPath TEXT'
-                ')');
+                ');'
+            'CREATE TABLE hoy('
+                'id INTEGER PRIMARY KEY'
+                'pathImage TEXT'
+                ');'
+        );
       },
       version: 1,
     );
