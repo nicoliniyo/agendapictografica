@@ -1,4 +1,5 @@
 import 'package:app/screens/activities.dart';
+import 'package:app/screens/db_pecs.dart';
 import 'package:app/screens/design_system.dart';
 import 'package:app/screens/local_pecs.dart';
 import 'package:app/screens/search.dart';
@@ -67,6 +68,30 @@ class _AppDrawer extends State<MainAppDrawer> {
                           style: ThemeTextStyle.roboto10Text),
                     ],
                   ),
+                ),
+                // DB Pecs -> SearchScreen
+                ListTile(
+                  title: Row(
+                    children: [
+                      const Icon(
+                        Icons.search_outlined,
+                        color: ThemeColors.primaryText,
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text('DB de Pecs', style: ThemeTextStyle.robotoText),
+                    ],
+                  ),
+                  selected: _selectedIndex == 1,
+                  onTap: () {
+                    _onItemTapped(1);
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (ctx) => const DbPecs(),
+                      ),
+                    );
+                  },
                 ),
                 // Local Pecs -> SearchScreen
                 ListTile(

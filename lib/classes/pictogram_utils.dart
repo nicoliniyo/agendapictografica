@@ -16,12 +16,17 @@ class PictogramUtils {
       extractedKeywords.add(keyword.trim().replaceAll(',', ''));
       extractedMeanings.add(meaning.trim().replaceAll(',', ''));
     }
-    kwordsAsStr = extractedKeywords.join(',');
-    meaningsAsStr = extractedMeanings.join(',');
+
+    kwordsAsStr = extractedKeywords.join(', ');
+    meaningsAsStr = extractedMeanings.join(', ');
     return Pec(
       id: pictogram.id,
       keywords: kwordsAsStr, 
       description: meaningsAsStr,
-      creation: DateTime.now());
+      categories: pictogram.categories.toString().replaceAll('[', '').replaceAll(']', ''),
+      tags: pictogram.tags.toString().replaceAll('[', '').replaceAll(']', ''),
+      creation: DateTime.now().millisecondsSinceEpoch.toString(),
+    );
+
   }
 }

@@ -31,7 +31,7 @@ class Pictograms {
   });
 
   factory Pictograms.fromJson(Map<String, dynamic> json) {
-    print('JSON $json');
+    //print('JSON $json');
     return Pictograms(
       id: json['_id'] as int,
       keywords: json['keywords'] as List<dynamic>,
@@ -48,26 +48,7 @@ class Pictograms {
     );
   }
 
-  static Pec toPec(Pictograms pictogram) {
-    List<String> extractedKeywords = [];
-    List<String> extractedMeanings = [];
-    String kwordsAsStr;
-    String meaningsAsStr;
-    for (var keywordData in pictogram.keywords) {
-      String keyword = keywordData['keyword'];
-      String meaning = keywordData['meaning'];
-      
-      extractedKeywords.add(keyword);
-      extractedMeanings.add(meaning);
-    }
-    kwordsAsStr = extractedKeywords.join('');
-    meaningsAsStr = extractedMeanings.join('');
-    return Pec(
-      id: pictogram.id,
-      keywords: kwordsAsStr, 
-      description: meaningsAsStr,
-      creation: DateTime.now());
-  }
+
 }
 
 class Keyword{

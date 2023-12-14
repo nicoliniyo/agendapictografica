@@ -1,3 +1,4 @@
+import 'package:app/classes/local_storage.dart';
 import 'package:app/classes/pecs_image_provider.dart';
 import 'package:app/classes/pecs_url_builder.dart';
 import 'package:app/models/pictograms.dart';

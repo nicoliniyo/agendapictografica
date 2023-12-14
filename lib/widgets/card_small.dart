@@ -8,13 +8,18 @@ import 'package:flutter/material.dart';
 
 class CardSmall extends StatelessWidget {
 
-  CardSmall.fromPictogram(Pictograms pictogram, {super.key}){
+  CardSmall.fromPictogram(Pictograms pictogram, {super.key}) {
     Pec pecObj = PictogramUtils.toPec(pictogram);
+    pec = pecObj;
     id = pecObj.id;
     title = pecObj.keywords;
     description = pecObj.description;
     imgUrl = PecsUrlBuilder().pictograms(pecObj.id.toString());
+    categories = pecObj.categories;
+    tags = pecObj.tags;
     tap = (){};
+    //Update pecObj with the url was used to get the image from Arassac API
+    pecObj.imgUrl = imgUrl!;
   }
 
   CardSmall(
@@ -24,7 +29,9 @@ class CardSmall extends StatelessWidget {
         this.title,
         this.description,
         this.imgUrl,
-        this.tap
+        this.tap,
+        this.categories,
+        this.pec,
        });
 
   int? id;
@@ -32,11 +39,29 @@ class CardSmall extends StatelessWidget {
   String? imgUrl;
   Function? tap;
   String? title;
+  String? categories;
+  String? tags;
+  Pec? pec;
   
   //final void Function(String identifier) 
-  void _saveToFile(String imgUrl, String id)  {
+  void _updatePecAndSave(String imgUrl, String id)  async {
+    //Save img in local
     var copyImageToLocal = LocalStorage().copyImageToLocal(imgUrl, id);
     debugPrint("SAVE_TO_FILE: $copyImageToLocal");
+    
+    //Update local pecObject with local path of image
+    var path = await LocalStorage().createImageToLocalPath(imgUrl!, id.toString())
+    .then((value) => pec!.localImgPath = value);
+
+
+    //Save to DB
+    //try {
+    var savePecToDbResult = await LocalStorage().savePecToDb(pec!)
+    .then((value) => print('SAVED_TO_DB: $value, PEC.id: ${pec!.id.toString()}'));
+    // catch (DatabaseException error) {
+    // Unhandled Exception: DatabaseException(UNIQUE constraint failed: pecs.id (code 1555 SQLITE_CONSTRAINT_PRIMARYKEY))
+    // }
+    
   }
  
 
@@ -82,6 +107,14 @@ class CardSmall extends StatelessWidget {
                                 title!.capitalize(),
                                 style: Theme.of(context).textTheme.titleSmall,
                               ),
+                              // Text(
+                              //   categories!,
+                              //   style: Theme.of(context).textTheme.titleSmall,
+                              // ),
+                              // Text(
+                              //   tags!,
+                              //   style: Theme.of(context).textTheme.titleSmall,
+                              // ),
                             ],
                           ),
                         ),
@@ -99,7 +132,7 @@ class CardSmall extends StatelessWidget {
                             // SizedBox(width: 8),
                             IconButton(
                                 icon: const Icon(Icons.cloud_download_outlined),
-                                onPressed: () => _saveToFile(imgUrl!, id!.toString()),
+                                onPressed: () => _updatePecAndSave(imgUrl!, id!.toString()),
                               ),
                             SizedBox(width: 8),
                             Icon(Icons.delete_outline_outlined),

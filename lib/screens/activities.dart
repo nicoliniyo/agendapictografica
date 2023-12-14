@@ -1,7 +1,9 @@
 import 'dart:io';
 
 
+import 'package:app/classes/database_provider.dart';
 import 'package:app/classes/local_storage.dart';
+import 'package:app/data/pec.dart';
 import 'package:app/widgets/app_drawer.dart';
 import 'package:app/widgets/card_pec.dart';
 import 'package:app/widgets/list_droppable_pecs.dart';
@@ -25,7 +27,7 @@ class _Activities extends State<Activities> {
   CardPec? blankPec4 ; //= sizedBoxBlank();
   CardPec? blankPec5 ; //= sizedBoxBlank();
   CardPec? blankPec6 ; //= sizedBoxBlank();
-  List<File> column1Items = List.empty(growable: true);
+  List<Pec> column1Items = List.empty(growable: true);
   List<CardPec> column2Items = [];
   List<int> column3Items = List.generate(3, (index) => (index + 1) * 3);
 
@@ -60,7 +62,7 @@ class _Activities extends State<Activities> {
 
   }
   updateCatalog() async {
-    column1Items = await LocalStorage().listPngFiles();
+    await DatabaseProvider().loadPecs().then((value) => column1Items = value);
     setState(() {
 
     });
@@ -70,10 +72,10 @@ class _Activities extends State<Activities> {
   @override
   void initState() {
     super.initState();
-    if(!variablesUpdated){
+    //if(!variablesUpdated){
       updateCatalog();
-      variablesUpdated = true;
-    }
+    //   variablesUpdated = true;
+    // }
     loadBlankPec();
   }
 
@@ -115,9 +117,10 @@ class _Activities extends State<Activities> {
                     shrinkWrap: true,
                     itemCount: column1Items.length,
                     itemBuilder: (BuildContext context, int index) {
-                      String titleFile = column1Items[index].path.split('/').last;
-                      File itemFile = column1Items[index];
-                      print(titleFile + ' -> ' + itemFile.path);
+                      String? titleFile = column1Items[index].keywords;
+                      var localImgPath = column1Items[index].localImgPath;
+                      File itemFile = File(localImgPath!);
+                      print(titleFile! + ' -> ' + itemFile.path);
                       var internalCard = CardPec(title: titleFile, imgFile: itemFile);
                       var stackCard = Stack(
                         alignment: Alignment.bottomCenter,
