@@ -18,7 +18,7 @@ class DatabaseProvider {
                 'description TEXT, '
                 'categories TEXT,'
                 'tags TEXT,'
-                'creation INTEGER,'
+                'creation TEXT,'
                 'imgUrl TEXT,'
                 'localImgPath TEXT'
                 ');'

@@ -42,9 +42,18 @@ class CardSmall extends StatelessWidget {
   String? categories;
   String? tags;
   Pec? pec;
+
+  void _snackBarMessage(String text, BuildContext context) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.pink,
+          content: Text(text),
+        ),
+      );
+    }
   
   //final void Function(String identifier) 
-  void _updatePecAndSave(String imgUrl, String id)  async {
+  void _updatePecAndSave(String imgUrl, String id, BuildContext context)  async {
     //Save img in local
     var copyImageToLocal = LocalStorage().copyImageToLocal(imgUrl, id);
     debugPrint("SAVE_TO_FILE: $copyImageToLocal");
@@ -61,6 +70,7 @@ class CardSmall extends StatelessWidget {
     // catch (DatabaseException error) {
     // Unhandled Exception: DatabaseException(UNIQUE constraint failed: pecs.id (code 1555 SQLITE_CONSTRAINT_PRIMARYKEY))
     // }
+    _snackBarMessage("${pec!.keywords} guardado con exito!", context);
     
   }
  
@@ -132,7 +142,7 @@ class CardSmall extends StatelessWidget {
                             // SizedBox(width: 8),
                             IconButton(
                                 icon: const Icon(Icons.cloud_download_outlined),
-                                onPressed: () => _updatePecAndSave(imgUrl!, id!.toString()),
+                                onPressed: () => _updatePecAndSave(imgUrl!, id!.toString(), context),
                               ),
                             SizedBox(width: 8),
                             Icon(Icons.delete_outline_outlined),
