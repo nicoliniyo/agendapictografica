@@ -1,10 +1,7 @@
-
 import 'dart:io';
 
-import 'package:app/classes/local_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'card_pec.dart';
 
 class ListPecs extends StatelessWidget {
@@ -71,7 +68,7 @@ class ListPecs extends StatelessWidget {
                     },
                   )
             )
-            : Text('Ninguna imagen local'),
+            : const Text('Ninguna imagen local'),
 
         // : IconButton(
         //     onPressed: () {},

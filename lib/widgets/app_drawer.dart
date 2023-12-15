@@ -122,7 +122,7 @@ class _AppDrawer extends State<MainAppDrawer> {
                   title: Row(
                     children: [
                       const Icon(
-                        Icons.local_activity,
+                        Icons.view_column_outlined,
                         color: ThemeColors.primaryText,
                       ),
                       const SizedBox(
@@ -184,14 +184,12 @@ class _AppDrawer extends State<MainAppDrawer> {
                     _onItemTapped(4);
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (ctx) => DesignSystem(),
+                        builder: (ctx) => const DesignSystem(),
                       ),
                     );
                   },
                 ),
               ],
-
-              
             ),
           ),
           ListTile(

@@ -1,11 +1,9 @@
 import 'dart:io';
 
 import 'package:app/classes/database_provider.dart';
-import 'package:app/classes/local_storage.dart';
 import 'package:app/data/pec.dart';
 import 'package:app/widgets/app_drawer.dart';
 import 'package:app/widgets/card_pec.dart';
-import 'package:app/widgets/list_droppable_pecs.dart';
 import 'package:flutter/material.dart';
 
 class CatalogPecs extends StatefulWidget {
@@ -26,8 +24,8 @@ class _CatalogPecs extends State<CatalogPecs> {
   Widget sizedBoxBlank() {
     return Container(
       width: 100,
-      decoration: new BoxDecoration(
-        borderRadius: new BorderRadius.circular(16.0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16.0),
         color: Colors.black12,
       ),
     );

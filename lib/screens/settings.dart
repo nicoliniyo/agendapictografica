@@ -11,7 +11,7 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('THEME: ' + themeManager.themeMode.toString());
+    debugPrint('THEME: ' + themeManager.themeMode.toString());
     return Scaffold(
       appBar: AppBar(
         title: Text('Ajustes', style: Theme.of(context).textTheme.titleLarge,),

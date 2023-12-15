@@ -26,7 +26,7 @@ class LocalStorage {
     var pathAndFilename = await createImageToLocalPath(imageUrl, targetFileName);
     final file = File(pathAndFilename);
     if(file.existsSync()){
-      print('File Exists: ${pathAndFilename}');
+      print('File Exists: $pathAndFilename');
     } else {
       print('Writing TargetFilename: ${pathAndFilename}');
       await file.writeAsBytes(response.bodyBytes);
@@ -49,9 +49,9 @@ class LocalStorage {
   Future<int> savePecToDb(Pec pec) async {
 
     print("copyPecToDb:");
-    debugPrint("PEC.id: ${pec!.id.toString()}");
-    debugPrint("PEC.imgUrl: ${pec!.imgUrl}");
-    debugPrint("PEC.localImgPath: ${pec!.localImgPath}");
+    debugPrint("PEC.id: ${pec.id.toString()}");
+    debugPrint("PEC.imgUrl: ${pec.imgUrl}");
+    debugPrint("PEC.localImgPath: ${pec.localImgPath}");
     var db = await DatabaseProvider().getDatabase();
     return db.insert('pecs', {
       'id': pec.id,
@@ -68,15 +68,12 @@ class LocalStorage {
   }
 
   Future<List<File>> listPngFiles() async {
-    List<File> pngFiles = [];
     final documentDirectory = await syspaths.getApplicationDocumentsDirectory();
-    
-      return pngFiles = documentDirectory
-          .listSync()
-          .where((file) => file is File && file.path.endsWith('.png'))
-          .toList()
-          .cast<File>();
-    
+    return documentDirectory
+        .listSync()
+        .where((file) => file is File && file.path.endsWith('.png'))
+        .toList()
+        .cast<File>();
   }
 
   Future<File> getImageFileFromAssets(String path) async {

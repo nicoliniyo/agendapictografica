@@ -1,4 +1,3 @@
-import 'package:app/data/pec.dart';
 
 class Pictograms {
    

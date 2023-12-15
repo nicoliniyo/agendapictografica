@@ -12,6 +12,7 @@ import 'package:app/theme/theme_manager.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 
 // Sets a platform override for desktop to avoid exceptions. See
@@ -37,7 +38,7 @@ void main() {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]).then((fn) {
-  runApp(const AgendaPecsApp());
+  runApp(const ProviderScope( child: AgendaPecsApp()));
   });
 }
 

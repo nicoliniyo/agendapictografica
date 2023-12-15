@@ -55,17 +55,14 @@ class CardSmall extends StatelessWidget {
   //final void Function(String identifier) 
   void _updatePecAndSave(String imgUrl, String id, BuildContext context)  async {
     //Save img in local
-    var copyImageToLocal = LocalStorage().copyImageToLocal(imgUrl, id);
-    debugPrint("SAVE_TO_FILE: $copyImageToLocal");
-    
+    LocalStorage().copyImageToLocal(imgUrl, id);
     //Update local pecObject with local path of image
-    var path = await LocalStorage().createImageToLocalPath(imgUrl!, id.toString())
+    await LocalStorage().createImageToLocalPath(imgUrl, id.toString())
     .then((value) => pec!.localImgPath = value);
-
 
     //Save to DB
     //try {
-    var savePecToDbResult = await LocalStorage().savePecToDb(pec!)
+    await LocalStorage().savePecToDb(pec!)
     .then((value) => print('SAVED_TO_DB: $value, PEC.id: ${pec!.id.toString()}'));
     // catch (DatabaseException error) {
     // Unhandled Exception: DatabaseException(UNIQUE constraint failed: pecs.id (code 1555 SQLITE_CONSTRAINT_PRIMARYKEY))
@@ -144,8 +141,8 @@ class CardSmall extends StatelessWidget {
                                 icon: const Icon(Icons.cloud_download_outlined),
                                 onPressed: () => _updatePecAndSave(imgUrl!, id!.toString(), context),
                               ),
-                            SizedBox(width: 8),
-                            Icon(Icons.delete_outline_outlined),
+                            const SizedBox(width: 8),
+                            const Icon(Icons.delete_outline_outlined),
                           ],
                         ),
                         const Spacer(),

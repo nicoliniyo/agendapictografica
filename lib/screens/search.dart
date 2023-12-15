@@ -1,12 +1,8 @@
-import 'dart:io';
-
-import 'package:app/classes/local_storage.dart';
 import 'package:app/classes/pecs_image_provider.dart';
 import 'package:app/models/pictograms.dart';
 import 'package:app/theme/theme_manager.dart';
 import 'package:app/widgets/app_drawer.dart';
 import 'package:app/widgets/card_small.dart';
-import 'package:app/widgets/list_pecs.dart';
 import 'package:flutter/material.dart';
 
 class SearchScreen extends StatefulWidget {

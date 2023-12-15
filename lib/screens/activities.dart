@@ -1,25 +1,24 @@
 import 'dart:io';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:app/classes/database_provider.dart';
-import 'package:app/classes/local_storage.dart';
 import 'package:app/data/pec.dart';
 import 'package:app/widgets/app_drawer.dart';
 import 'package:app/widgets/card_pec.dart';
-import 'package:app/widgets/list_droppable_pecs.dart';
+import 'package:app/data/activities_notifier.dart';
 import 'package:flutter/material.dart';
 
-class Activities extends StatefulWidget {
+class Activities extends ConsumerStatefulWidget {
   const Activities({super.key});
 
   @override
-  State<Activities> createState() {
+  ConsumerState<Activities> createState() {
     return _Activities();
   }
 
 }
 
-class _Activities extends State<Activities> {
+class _Activities extends ConsumerState<Activities> {
   bool variablesUpdated = false;
   CardPec? blankPec ; //= sizedBoxBlank();
   CardPec? blankPec2 ; //= sizedBoxBlank();
@@ -28,14 +27,14 @@ class _Activities extends State<Activities> {
   CardPec? blankPec5 ; //= sizedBoxBlank();
   CardPec? blankPec6 ; //= sizedBoxBlank();
   List<Pec> column1Items = List.empty(growable: true);
-  List<CardPec> column2Items = [];
+  List<CardPec> column2Items = List.empty(growable: true);
   List<int> column3Items = List.generate(3, (index) => (index + 1) * 3);
 
   Widget sizedBoxBlank() {
     return Container(
             width: 100,
-            decoration: new BoxDecoration(
-              borderRadius: new BorderRadius.circular(16.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16.0),
               color: Colors.black12,
             ),
     );
@@ -60,18 +59,35 @@ class _Activities extends State<Activities> {
 
   @override
   void initState() {
+
     super.initState();
     //if(!variablesUpdated){
       updateCatalog();
     //   variablesUpdated = true;
     // }
     loadBlankPec();
+
+
   }
 
   @override
-  Widget build(BuildContext context)  {
+  Widget build(BuildContext context) {
+    var pecs = ref.watch(activitiesTodayProvider.notifier).state;
+    print('PROVIDER: $pecs');
+    column2Items = pecs.map((e) => CardPec.fromPec(e)).toList();
+    // setState(() {
+    //   if(column2Items.isNotEmpty) {
+    //     blankPec = column2Items[0] ?? CardPec.blank(true);
+    //     blankPec2 = column2Items[1] ?? CardPec.blank(true);
+    //     blankPec3 = column2Items[2] ?? CardPec.blank(true);
+    //     blankPec4 = column2Items[3] ?? CardPec.blank(true);
+    //     blankPec5 = column2Items[4] ?? CardPec.blank(true);
+    //   }
+    // });
+
+    //print('PROVIDER: ${column2Items.isEmpty}');
     bool showPecsLane = true;
-    
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -109,12 +125,12 @@ class _Activities extends State<Activities> {
                       String? titleFile = column1Items[index].keywords;
                       var localImgPath = column1Items[index].localImgPath;
                       File itemFile = File(localImgPath!);
-                      print(titleFile! + ' -> ' + itemFile.path);
+                      // print(titleFile! + ' -> ' + itemFile.path);
                       var internalCard = CardPec(title: titleFile, imgFile: itemFile);
                       var stackCard = Stack(
                         alignment: Alignment.bottomCenter,
                           children: [
-                            Text(titleFile),
+                            Text(titleFile!),
                             CardPec(title: titleFile, imgFile: itemFile)
                           ],
                       );
@@ -145,7 +161,14 @@ class _Activities extends State<Activities> {
                               opacity: 0.5,
                               child: internalCard,
                             ),
-                            data: internalCard, // Data to identify the item
+                            data: internalCard,
+                            onDragCompleted: (){
+                              print("DARG COMPLETE!");
+                              //
+                              // ref.watch(activitiesTodayProvider.notifier)
+                              //     .updateTodayActivities(column1Items[index], index);
+                                  // .updateAllActivities(pecs);
+                            },// Data to identify the item
                         ),
                       );
                     },

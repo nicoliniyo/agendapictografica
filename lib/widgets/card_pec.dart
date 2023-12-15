@@ -1,8 +1,15 @@
 import 'dart:io';
 
+import 'package:app/data/pec.dart';
 import 'package:flutter/material.dart';
 
 class CardPec extends StatelessWidget {
+  CardPec.fromPec(Pec pec, {super.key}) {
+    title = pec.keywords;
+    imgFile = File(pec.localImgPath!);
+    blank = false;
+  }
+
   CardPec.blank(bool forceBlank, {super.key}) {
     title = '';
     imgFile = File('');

@@ -1,6 +1,5 @@
 import 'package:app/classes/local_storage.dart';
 import 'package:app/widgets/card_pec.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
@@ -15,7 +14,7 @@ class ListDroppablePec extends StatefulWidget {
 
 class _ListDroppablePec extends State<ListDroppablePec> {
   late CardPec blankPec;
-  var uuid = Uuid();
+  var uuid = const Uuid();
 
   void loadBlankPec() async {
     var file = await LocalStorage().getImageFileFromAssets('assets/img/blank.png');

@@ -15,9 +15,8 @@ class DraggablePec extends StatelessWidget {
   Widget build(BuildContext context) => Draggable<CardPec>(
     data: cardPec,
     feedback: buildImage(),
-    child: buildImage(),
-    childWhenDragging: Opacity(
-        opacity: 0.5,)
+    childWhenDragging: const Opacity(opacity: 0.5,),
+    child: buildImage()
   );
 
   Widget buildImage() => Container(
