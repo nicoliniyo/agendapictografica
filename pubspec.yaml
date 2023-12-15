@@ -50,6 +50,7 @@ dependencies:
   path: ^1.8.3
   uuid: ^4.2.1
   sqflite: ^2.3.0
+  flutter_riverpod: ^2.4.9
 
 flutter_icons:
   android: true

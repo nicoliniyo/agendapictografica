@@ -11,7 +11,7 @@ class DatabaseProvider {
     final db = await sql.openDatabase(
       path.join(dbPath, 'pecs.db'),
       onCreate: (db, version) {
-        return db.execute(
+         db.execute(
             'CREATE TABLE pecs('
                 'id INTEGER PRIMARY KEY, '
                 'keywords TEXT, '
@@ -22,11 +22,13 @@ class DatabaseProvider {
                 'imgUrl TEXT,'
                 'localImgPath TEXT'
                 ');'
-            'CREATE TABLE hoy('
-                'id INTEGER PRIMARY KEY'
+            );
+         db.execute(
+             'CREATE TABLE hoy('
+                'id INTEGER PRIMARY KEY,'
                 'pathImage TEXT'
                 ');'
-        );
+             );
       },
       version: 1,
     );
