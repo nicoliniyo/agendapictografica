@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:app/classes/screen_message_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:app/classes/database_provider.dart';
@@ -19,7 +20,7 @@ class Activities extends ConsumerStatefulWidget {
 }
 
 class _Activities extends ConsumerState<Activities> {
-  bool variablesUpdated = false;
+  bool showPecsLane = false;
   CardPec? blankPec ; //= sizedBoxBlank();
   CardPec? blankPec2 ; //= sizedBoxBlank();
   CardPec? blankPec3 ; //= sizedBoxBlank();
@@ -27,18 +28,9 @@ class _Activities extends ConsumerState<Activities> {
   CardPec? blankPec5 ; //= sizedBoxBlank();
   CardPec? blankPec6 ; //= sizedBoxBlank();
   List<Pec> column1Items = List.empty(growable: true);
-  List<CardPec> column2Items = List.empty(growable: true);
+  List<CardPec> listCardPecs = List.empty(growable: true);
   List<int> column3Items = List.generate(3, (index) => (index + 1) * 3);
 
-  Widget sizedBoxBlank() {
-    return Container(
-            width: 100,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16.0),
-              color: Colors.black12,
-            ),
-    );
-  }
   loadBlankPec() async {
     var cardPec = CardPec.blank(true);
     blankPec = cardPec;
@@ -49,44 +41,73 @@ class _Activities extends ConsumerState<Activities> {
     blankPec6 = cardPec;
 
   }
+
   updateCatalog() async {
     await DatabaseProvider().loadPecs().then((value) => column1Items = value);
-    setState(() {
+    setState(() {});
 
-    });
+  }
 
+  loadPecsFromRPod() {
+    var pecs = ref.watch(activitiesTodayProvider.notifier).state;
+    listCardPecs = pecs;
+    listCardPecs.asMap().forEach((index, value) {
+        if(index == 0) {
+          blankPec = value;
+        }
+        else if(index == 1) {
+          blankPec2 = value;
+        }
+        else if(index == 2) {
+          blankPec3 = value;
+        }
+        else if(index == 3) {
+          blankPec4 = value;
+        }
+        else if(index == 4) {
+          blankPec5 = value;
+        }
+      }
+    );
+    print('loadPecsFromRPod PROVIDER: $pecs');
+    print('loadPecsFromRPod listCardPecs: ${listCardPecs.length}');
+  }
+
+  DragTarget<CardPec> createDropTarget(CardPec blankPec) {
+
+    return DragTarget<CardPec>(
+      //key: UniqueKey(),
+      builder: (BuildContext context, List<CardPec?> candidateData, List<dynamic> rejectedData) {
+        return Row(
+          children: [
+            blankPec,
+          ],
+        );
+      },
+      onWillAccept: (cardPec) =>true,
+      onAccept: (CardPec cardPec) {
+        blankPec = cardPec;
+        listCardPecs.add(cardPec);
+
+        print('DragTarget listCardPecs: ${listCardPecs.length}');
+        ref.watch(activitiesTodayProvider.notifier)
+            .updateAllCardActivities(listCardPecs);
+      },
+    );
   }
 
   @override
   void initState() {
-
     super.initState();
-    //if(!variablesUpdated){
-      updateCatalog();
-    //   variablesUpdated = true;
-    // }
+    updateCatalog();
     loadBlankPec();
-
-
+    showPecsLane = true;
   }
 
   @override
   Widget build(BuildContext context) {
-    var pecs = ref.watch(activitiesTodayProvider.notifier).state;
-    print('PROVIDER: $pecs');
-    column2Items = pecs.map((e) => CardPec.fromPec(e)).toList();
-    // setState(() {
-    //   if(column2Items.isNotEmpty) {
-    //     blankPec = column2Items[0] ?? CardPec.blank(true);
-    //     blankPec2 = column2Items[1] ?? CardPec.blank(true);
-    //     blankPec3 = column2Items[2] ?? CardPec.blank(true);
-    //     blankPec4 = column2Items[3] ?? CardPec.blank(true);
-    //     blankPec5 = column2Items[4] ?? CardPec.blank(true);
-    //   }
-    // });
+    loadPecsFromRPod();
 
-    //print('PROVIDER: ${column2Items.isEmpty}');
-    bool showPecsLane = true;
 
     return Scaffold(
       appBar: AppBar(
@@ -96,10 +117,20 @@ class _Activities extends ConsumerState<Activities> {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.notifications),
+            icon: const Icon(Icons.refresh_outlined, semanticLabel: 'Limpiar',),
+            onPressed: () {
+              ref.watch(activitiesTodayProvider.notifier).clearActivities();
+              ScreenMessageService().snackBarMessage('Actividades removidas', context);
+              setState(() {
+                // showPecsLane = false;
+              });
+            },
+          ),
+          IconButton(
+            icon: showPecsLane ? const Icon(Icons.check,) : const Icon(Icons.edit,),
             onPressed: () {
               setState(() {
-                showPecsLane = false;
+                showPecsLane = !showPecsLane;
               });
             },
           ),
@@ -116,7 +147,7 @@ class _Activities extends ConsumerState<Activities> {
                 Container(
                   width: 150,
                   //flex: 1,
-                  child:
+                  child: (showPecsLane) ?
                   ListView.builder(
                     //physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
@@ -134,8 +165,6 @@ class _Activities extends ConsumerState<Activities> {
                             CardPec(title: titleFile, imgFile: itemFile)
                           ],
                       );
-
-
                       var expandedCard = Expanded(
                          flex: 1,
                          //child: CardPec(title: titleFile, imgFile: itemFile),
@@ -149,10 +178,8 @@ class _Activities extends ConsumerState<Activities> {
                       ],);
                       return
                         SizedBox(
-
                         width: 100,
                         height: 100,
-                        //key: ValueKey(column1Items[index]),
                           child : Draggable<CardPec>(
                             key: ValueKey(column1Items[index]),
                             feedback: internalCard,
@@ -162,15 +189,23 @@ class _Activities extends ConsumerState<Activities> {
                               child: internalCard,
                             ),
                             data: internalCard,
-                            onDragCompleted: (){
-                              print("DARG COMPLETE!");
-                              //
-                              // ref.watch(activitiesTodayProvider.notifier)
-                              //     .updateTodayActivities(column1Items[index], index);
-                                  // .updateAllActivities(pecs);
-                            },// Data to identify the item
+                            // onDragCompleted: (){
+                              // print("DARG COMPLETE!");
+                            // },// Data to identify the item
                         ),
                       );
+                    },
+                  )
+                  :
+                  IconButton(
+                    icon: const Icon(
+                      Icons.photo_library_outlined,
+                      size: 48,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        showPecsLane = true;
+                      });
                     },
                   ),
                 ),
@@ -183,103 +218,44 @@ class _Activities extends ConsumerState<Activities> {
                     // mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       //blankPec,
-                      DragTarget<CardPec>(
-                          builder: (BuildContext context, List<CardPec?> candidateData, List<dynamic> rejectedData) {
-                            return Row(
+                      createDropTarget(blankPec!),
+                      const SizedBox(height: 10,),
+                      createDropTarget(blankPec2!),
+                      const SizedBox(height: 10,),
+                      createDropTarget(blankPec3!),
+                      const SizedBox(height: 10,),
+                      createDropTarget(blankPec4!),
+                      const SizedBox(height: 10,),
+                      createDropTarget(blankPec5!),
 
-                              children: [
-                                blankPec as CardPec,
-                              ],
-                            );
-                          },
-                        onWillAccept: (cardPec) =>true,
-                        onAccept: (CardPec cardPec) {
-                          blankPec = cardPec;
-                        },
-                      ),
-                      const SizedBox(height: 10,),
-                      DragTarget<CardPec>(
-                        builder: (BuildContext context, List<CardPec?> candidateData, List<dynamic> rejectedData) {
-                          return Row(
-                            children: [
-                              blankPec2 as CardPec,
-                            ],
-                          );
-                        },
-                        onWillAccept: (cardPec) =>true,
-                        onAccept: (CardPec cardPec) {
-                          blankPec2 = cardPec;
-                        },
-                      ),
-                      const SizedBox(height: 10,),
-                      DragTarget<CardPec>(
-                        builder: (BuildContext context, List<CardPec?> candidateData, List<dynamic> rejectedData) {
-                          return Row(
-                            children: [
-                              blankPec3 as CardPec,
-                            ],
-                          );
-                        },
-                        onWillAccept: (cardPec) =>true,
-                        onAccept: (CardPec cardPec) {
-                          blankPec3 = cardPec;
-                        },
-                      ),
-                      const SizedBox(height: 10,),
-                      DragTarget<CardPec>(
-                        builder: (BuildContext context, List<CardPec?> candidateData, List<dynamic> rejectedData) {
-                          return Row(
-                            children: [
-                              blankPec4 as CardPec,
-                            ],
-                          );
-                        },
-                        onWillAccept: (cardPec) =>true,
-                        onAccept: (CardPec cardPec) {
-                          blankPec4 = cardPec;
-                        },
-                      ),
-                      const SizedBox(height: 10,),
-                      DragTarget<CardPec>(
-                        builder: (BuildContext context, List<CardPec?> candidateData, List<dynamic> rejectedData) {
-                          return Row(
-                            children: [
-                              blankPec5 as CardPec,
-                            ],
-                          );
-                        },
-                        onWillAccept: (cardPec) =>true,
-                        onAccept: (CardPec cardPec) {
-                          blankPec5 = cardPec;
-                        },
-                      ),
+                      Divider(),
 
+                      // Expanded(
+                      //   flex: 1,
+                      //   child:
+                      //     ReorderableListView.builder(
+                      //     itemCount: listCardPecs.length,
+                      //     // Add 1 for the potential dropped item
+                      //     itemBuilder: (BuildContext context, int index) {
+                      //       // String idStatePec = listCardPecs[index].id.toString();
+                      //       // var selectedPec = listCardPecs.where((element) => element.imgFile?.path.split('/').last == idStatePec );
+                      //       return listCardPecs[index];
+                      //
+                      //     },
+                      //     onReorder: (oldIndex, newIndex) {
+                      //       setState(() {
+                      //         if (newIndex > oldIndex) {
+                      //           newIndex -= 1;
+                      //         }
+                      //         final CardPec item = listCardPecs.removeAt(oldIndex);
+                      //         listCardPecs.insert(newIndex, item);
+                      //       });
+                      //     },
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),
-                  // child: ReorderableListView.builder(
-                  //   itemCount: 1,
-                  //   // Add 1 for the potential dropped item
-                  //   itemBuilder: (BuildContext context, int index) {
-                  //     String titleFile = column1Items[index].path.split('/').last;
-                  //     File itemFile = column1Items[index];
-                  //     print(titleFile + ' -> ' + itemFile.path);
-                  //     return ListDroppablePec();
-                  //
-                  //   },
-                  //   onReorder: (oldIndex, newIndex) {
-                  //     setState(() {
-                  //       if (newIndex > oldIndex) {
-                  //         newIndex -= 1;
-                  //       }
-                  //       final CardPec item = column2Items.removeAt(oldIndex);
-                  //       column2Items.insert(newIndex, item);
-                  //     });
-                  //   },
-                  // ),
-                // ),
-
-
 
                 // Expanded(
                 //   flex: 1,

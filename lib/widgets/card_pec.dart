@@ -8,12 +8,13 @@ class CardPec extends StatelessWidget {
     title = pec.keywords;
     imgFile = File(pec.localImgPath!);
     blank = false;
+    pecObject = pec;
   }
 
   CardPec.blank(bool forceBlank, {super.key}) {
     title = '';
     imgFile = File('');
-    this.blank = forceBlank;
+    blank = forceBlank;
   }
 
   CardPec({
@@ -21,11 +22,17 @@ class CardPec extends StatelessWidget {
     required this.title,
     required this.imgFile,
     this.blank = false,
+    this.pecObject,
   });
 
   String? title;
   File? imgFile;
   bool? blank;
+  Pec? pecObject;
+
+  Pec get pecObj {
+    return this.pecObject!;
+  }
 
   @override
   Widget build(BuildContext context) {
