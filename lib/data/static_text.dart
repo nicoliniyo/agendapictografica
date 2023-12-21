@@ -1,0 +1,8 @@
+
+class StaticText {
+static var acercaDe = 'Agenda PECS es una aplicación pensada con gran cuidado para ofrecer ayuda visual a niños que tienen autismo. Esta app es respaldada por HL7Core.online, una comunidad comprometida con el apoyo y la comprensión del autismo en todas sus formas. Uno de sus pilares fundamentales radica en la utilización de imágenes provenientes de Arasaac.org. Estas imágenes, seleccionadas meticulosamente, son una contribución invaluable para la app, y su uso está regido por la Licencia Creative Commons BY-NC-SA. Esta licencia permite compartir y adaptar estas imágenes, siempre y cuando se otorgue el crédito correspondiente, no se utilicen con fines comerciales y se mantenga la misma licencia en las obras derivadas. La combinación de la tecnología de la Agenda PECS con la calidad y accesibilidad de las imágenes de Arasaac.org es un ejemplo poderoso de cómo la colaboración y el compromiso pueden beneficiar significativamente a la comunidad autista y a quienes les rodean.';
+static var atribucionArasaac = 'Los símbolos pictográficos utilizados son propiedad del Gobierno de Aragón y han sido creados por Sergio Palao para ARASAAC (http://www.arasaac.org), que los distribuye bajo Licencia Creative Commons BY-NC-SA.'
+    'Autor pictogramas: Sergio Palao. Origen: ARASAAC (http://www.arasaac.org). Licencia: CC (BY-NC-SA). Propiedad: Gobierno de Aragón (España)';
+static var usoImagenes = 'Todas las imágenes de este producto están bajo licencia: CC BY-NC-SA 4.0 DEED - https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es';
+static var licenciaApp= 'Esta aplicación está bajo licencia: https://www.gnu.org/licenses/gpl-3.0.html#license-text';
+}

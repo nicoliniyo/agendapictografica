@@ -1,16 +1,15 @@
-# app
+# Agenda PECS
 
-A new Flutter project.
+This project involves developing a picture exchange aimed at creating an application designed to facilitate task management within a visual agenda.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This is FOSS project, it's free
 
-A few resources to get you started if this is your first Flutter project:
+For help getting started with AgendaPecs project, view the
+[online documentation](https://nicoliniyo.github.io/agendapecs/), which offers design,
+features and guidance on the instalation, and user experiecne with the Apps.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- [online documentation:](https://nicoliniyo.github.io/agendapecs/)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+

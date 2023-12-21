@@ -1,0 +1,45 @@
+{
+  _id: 6964,
+  created: 2009-01-12T10
+  :
+  39: 22.000Z,
+  downloads: 0,
+  tags: [
+    place,
+    building,
+    home,
+    core
+    vocabulary,
+    document
+  ],
+  synsets: [
+    03549540-n,
+    08094856-n,
+    08576692-n
+  ],
+  sex: false,
+  lastUpdated: 2021-09-07T18:20:36.902Z,
+  schematic: true,
+  keywords: [
+    {
+      keyword: casa,
+      type: 2,
+      meaning: f. Edificio o parte de él para vivir.,
+      plural: casas,
+      hasLocution: true
+    }
+  ],
+  desc:,
+  categories: [
+    residential
+    building,
+    core
+    vocabulary-place,
+    document
+  ],
+  violence: false,
+  hair: false,
+  skin: false,
+  aac: true,
+  aacColor: true
+}

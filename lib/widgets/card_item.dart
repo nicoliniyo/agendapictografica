@@ -1,22 +1,35 @@
-import 'package:app/classes/string_capitalize_extension.dart';
-import 'package:app/theme/custom_theme.dart';
-import 'package:app/widgets/icons_stacked.dart';
+import 'package:app/classes/pecs_url_builder.dart';
+import 'package:app/classes/pictogram_utils.dart';
+import 'package:app/data/pec.dart';
+import 'package:app/models/pictograms.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class CardItem extends StatelessWidget {
+  CardItem.fromPictogram(Pictograms pictogram, {super.key}){
+    Pec pecObj = PictogramUtils.toPec(pictogram);
+    id = pecObj.id;
+    title = pecObj.keywords;
+    description = pecObj.description;
+    imgUrl = PecsUrlBuilder().pictograms(pecObj.id.toString());
+    tap = (){};
+  }
+  
   CardItem(
       {
         super.key,
-        required this.title,
-        required this.description,
-        required this.imgUrl,
-        required this.tap
+        this.id,
+        this.title,
+        this.description,
+        this.imgUrl,
+        this.tap
        });
 
-  final String description;
-  final String imgUrl;
-  final Function tap;
-  final String title;
+  int? id;
+  String? description;
+  String? imgUrl;
+  Function? tap;
+  String? title;
 
  
 
@@ -40,7 +53,7 @@ class CardItem extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                title,
+                                title!,
                                 style: Theme.of(context).textTheme.titleLarge,
                               ),
                               
@@ -55,7 +68,7 @@ class CardItem extends StatelessWidget {
                             children: [
                               Image.network(
                                 // 'https://api.arasaac.org/v1/pictograms/6009?url=false&download=false',
-                                imgUrl,
+                                imgUrl!,
                                 width: 50,
                               ),
                               

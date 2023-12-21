@@ -1,17 +1,15 @@
-// Copyright 2017 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
-// ignore_for_file: public_member_api_docs
-
 import 'dart:io';
 
-import 'package:app/pages/design_system.dart';
+import 'package:app/screens/about.dart';
+import 'package:app/screens/activities.dart';
+import 'package:app/screens/search.dart';
 import 'package:app/theme/custom_theme.dart';
 import 'package:app/theme/theme_manager.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 
 // Sets a platform override for desktop to avoid exceptions. See
 // https://flutter.dev/desktop#target-platform-override for more info.
@@ -32,14 +30,22 @@ var kDarkColorScheme = ColorScheme.fromSeed(
 
 void main() {
   _enablePlatformOverrideForDesktop();
-  runApp(AgendaPecsApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]).then((fn) {
+  runApp(const ProviderScope( child: AgendaPecsApp()));
+  });
 }
 
 ThemeManager _themeManager = ThemeManager();
 
 class AgendaPecsApp extends StatefulWidget {
+  const AgendaPecsApp({super.key});
+
 
   @override
+  // ignore: library_private_types_in_public_api
   _AgendaPecsApp createState() => _AgendaPecsApp();
 
 }
@@ -71,11 +77,11 @@ class _AgendaPecsApp extends State<AgendaPecsApp> {
     return MaterialApp(
       title: 'Agenda PECS',
       
-      themeMode: _themeManager.themeMode,
+      themeMode: ThemeMode.light,
 
       theme: lightTheme,
       darkTheme: darkTheme,
-      home: DesignSystem(themeManager: _themeManager),
+      home: SearchScreen(themeManager: _themeManager),
     );
   }
 }

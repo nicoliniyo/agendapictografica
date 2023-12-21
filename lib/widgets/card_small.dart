@@ -1,27 +1,81 @@
+import 'package:app/classes/local_storage.dart';
+import 'package:app/classes/pecs_url_builder.dart';
+import 'package:app/classes/pictogram_utils.dart';
 import 'package:app/classes/string_capitalize_extension.dart';
-import 'package:app/theme/custom_theme.dart';
-import 'package:app/widgets/icons_stacked.dart';
+import 'package:app/data/pec.dart';
+import 'package:app/models/pictograms.dart';
 import 'package:flutter/material.dart';
 
 class CardSmall extends StatelessWidget {
+
+  CardSmall.fromPictogram(Pictograms pictogram, {super.key}) {
+    Pec pecObj = PictogramUtils.toPec(pictogram);
+    pec = pecObj;
+    id = pecObj.id;
+    title = pecObj.keywords;
+    description = pecObj.description;
+    imgUrl = PecsUrlBuilder().pictograms(pecObj.id.toString());
+    categories = pecObj.categories;
+    tags = pecObj.tags;
+    tap = (){};
+    //Update pecObj with the url was used to get the image from Arassac API
+    pecObj.imgUrl = imgUrl!;
+  }
+
   CardSmall(
       {
         super.key,
-        required this.title,
-        required this.description,
-        required this.imgUrl,
-        required this.tap
+        this.id,
+        this.title,
+        this.description,
+        this.imgUrl,
+        this.tap,
+        this.categories,
+        this.pec,
        });
 
-  final String description;
-  final String imgUrl;
-  final Function tap;
-  final String title;
+  int? id;
+  String? description;
+  String? imgUrl;
+  Function? tap;
+  String? title;
+  String? categories;
+  String? tags;
+  Pec? pec;
 
+  void _snackBarMessage(String text, BuildContext context) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.pink,
+          content: Text(text),
+        ),
+      );
+    }
+  
+  //final void Function(String identifier) 
+  void _updatePecAndSave(String imgUrl, String id, BuildContext context)  async {
+    //Save img in local
+    LocalStorage().copyImageToLocal(imgUrl, id);
+    //Update local pecObject with local path of image
+    await LocalStorage().createImageToLocalPath(imgUrl, id.toString())
+    .then((value) => pec!.localImgPath = value);
+
+    //Save to DB
+    //try {
+    await LocalStorage().savePecToDb(pec!)
+    .then((value) => print('SAVED_TO_DB: $value, PEC.id: ${pec!.id.toString()}'));
+    // catch (DatabaseException error) {
+    // Unhandled Exception: DatabaseException(UNIQUE constraint failed: pecs.id (code 1555 SQLITE_CONSTRAINT_PRIMARYKEY))
+    // }
+    _snackBarMessage("${pec!.keywords} guardado con exito!", context);
+    
+  }
  
 
   @override
   Widget build(BuildContext context) {
+    var imageFromUrl = Image.network(imgUrl!, width: 150,);
+    
     return Card(
               child: Padding(
                 padding: const EdgeInsets.symmetric(
@@ -40,11 +94,11 @@ class CardSmall extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                title,
+                                title!,
                                 style: Theme.of(context).textTheme.titleLarge,
                               ),
                               Text(
-                                description,
+                                description!,
                               ),
                             ],
                           ),
@@ -55,37 +109,44 @@ class CardSmall extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Image.network(
-                                // 'https://api.arasaac.org/v1/pictograms/6009?url=false&download=false',
-                                imgUrl,
-                                width: 150,
-                              ),
+                              imageFromUrl,
                               Text(
-                                title.capitalize(),
+                                title!.capitalize(),
                                 style: Theme.of(context).textTheme.titleSmall,
                               ),
+                              // Text(
+                              //   categories!,
+                              //   style: Theme.of(context).textTheme.titleSmall,
+                              // ),
+                              // Text(
+                              //   tags!,
+                              //   style: Theme.of(context).textTheme.titleSmall,
+                              // ),
                             ],
                           ),
                         ),
                       ],
                     ),
                     const SizedBox(height: 4),
-                    const Row(
+                    Row(
                       children: [
                         Row(
                           children: [
-                            Icon(Icons.image_outlined),
-                            SizedBox(width: 8),
-                            Icon(Icons.check_circle_outline_outlined),
+                            // Icon(Icons.image_outlined),
+                            // SizedBox(width: 8),
+                            // Icon(Icons.check_circle_outline_outlined),
                             //IconsStacked(main: Icons.image_outlined, helper: Icons.check_circle_rounded),
-                            SizedBox(width: 8),
-                            Icon(Icons.cloud_download_outlined),
-                            SizedBox(width: 8),
-                            Icon(Icons.delete_outline_outlined),
+                            // SizedBox(width: 8),
+                            IconButton(
+                                icon: const Icon(Icons.cloud_download_outlined),
+                                onPressed: () => _updatePecAndSave(imgUrl!, id!.toString(), context),
+                              ),
+                            const SizedBox(width: 8),
+                            const Icon(Icons.delete_outline_outlined),
                           ],
                         ),
-                        Spacer(),
-                        Row(
+                        const Spacer(),
+                        const Row(
                           children: [
                             Icon(Icons.list_outlined),
                                                         

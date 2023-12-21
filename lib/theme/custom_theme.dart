@@ -17,18 +17,7 @@ import 'package:google_fonts/google_fonts.dart';
     overflow: TextOverflow.fade,
   ),
 );
-MaterialColor myGreen = const MaterialColor(0xFCE4EC400,
-       {
-        50 :  Color(0xFFAAD401),
-        100 : const Color(0xFFAAD403),
-        200 : const Color(0xFFAAD406),
-        300 : const Color(0xFFAAD409),
-        400 : const Color(0xFFAAD40C),
-        500 : const Color(0xFFAAD40F),
-        600 : const Color(0xFFAAD412),
-        700 : const Color(0xFFAAD415),
-        800 : const Color(0xFFAAD418),
-        900 : const Color(0xFFAAD41F)});
+
 var kColorScheme = ColorScheme.fromSeed(
   seedColor: const Color.fromARGB(255, 3, 169, 244),
 );
@@ -48,11 +37,8 @@ ThemeData lightTheme = ThemeData(
   colorScheme: kColorScheme,
   primaryColor: ThemeColors.accentColor,
   splashColor: ThemeColors.accentColor,
-  primarySwatch: myGreen,
   hintColor: ThemeColors.accentColor,
   canvasColor: ThemeColors.accentColor,
-  backgroundColor: ThemeColors.accentColor,
-  bottomAppBarColor: ThemeColors.accentColor,
 
   cardTheme: const CardTheme().copyWith(
     color: kColorScheme.primaryContainer,
@@ -80,11 +66,6 @@ ThemeData lightTheme = ThemeData(
     )),
 
   outlinedButtonTheme: OutlinedButtonThemeData(
-    // style: OutlinedButton.styleFrom(
-    //     primary: ThemeColors.accentColor,
-    //     backgroundColor: ThemeColors.white,
-    //     foregroundColor: ThemeColors.accentColor,
-    //     ),
     style: ButtonStyle(
       padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
           const EdgeInsets.symmetric(horizontal: 40.0, vertical: 10.0)
@@ -101,7 +82,7 @@ ThemeData lightTheme = ThemeData(
       ),
       elevation: MaterialStateProperty.all(1),
       // backgroundColor: MaterialStateProperty.all<Color>(ThemeColors.white),
-      foregroundColor: MaterialStateProperty.all<Color>(ThemeColors.black),
+      //foregroundColor: MaterialStateProperty.all<Color>(ThemeColors.black),
     ),
 
   ),
