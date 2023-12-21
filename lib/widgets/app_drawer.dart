@@ -1,3 +1,4 @@
+import 'package:app/screens/about.dart';
 import 'package:app/screens/activities.dart';
 import 'package:app/screens/catalog_pecs.dart';
 import 'package:app/screens/design_system.dart';
@@ -128,7 +129,7 @@ class _AppDrawer extends State<MainAppDrawer> {
                       const SizedBox(
                         width: 10,
                       ),
-                      Text('Actividades', style: ThemeTextStyle.robotoText),
+                      Text('Actividades Hoy', style: ThemeTextStyle.robotoText),
                     ],
                   ),
                   selected: _selectedIndex == 3,
@@ -142,17 +143,41 @@ class _AppDrawer extends State<MainAppDrawer> {
                   },
                 ),
                 //Ajustes -> SettingsScreen
+                // ListTile(
+                //   title: Row(
+                //     children: [
+                //       const Icon(
+                //         Icons.settings,
+                //         color: ThemeColors.primaryText,
+                //       ),
+                //       const SizedBox(
+                //         width: 10,
+                //       ),
+                //       Text('Ajustes', style: ThemeTextStyle.robotoText),
+                //     ],
+                //   ),
+                //   selected: _selectedIndex == 2,
+                //   onTap: () {
+                //     _onItemTapped(2);
+                //     Navigator.of(context).push(
+                //       MaterialPageRoute(
+                //         builder: (ctx) => SettingsScreen(themeManager: _themeManager,),
+                //       ),
+                //     );
+                //   },
+                // ),
+                //Ajustes -> SettingsScreen
                 ListTile(
                   title: Row(
                     children: [
                       const Icon(
-                        Icons.settings,
+                        Icons.info_outline,
                         color: ThemeColors.primaryText,
                       ),
                       const SizedBox(
                         width: 10,
                       ),
-                      Text('Ajustes', style: ThemeTextStyle.robotoText),
+                      Text('Acerca de', style: ThemeTextStyle.robotoText),
                     ],
                   ),
                   selected: _selectedIndex == 2,
@@ -160,35 +185,35 @@ class _AppDrawer extends State<MainAppDrawer> {
                     _onItemTapped(2);
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (ctx) => SettingsScreen(themeManager: _themeManager,),
+                        builder: (ctx) =>  AboutScreen(),
                       ),
                     );
                   },
                 ),
                 //Components -> DesignSystem
-                ListTile(
-                  title: Row(
-                    children: [
-                      const Icon(
-                        Icons.dashboard,
-                        color: ThemeColors.primaryText,
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Text('Componentes', style: ThemeTextStyle.robotoText),
-                    ],
-                  ),
-                  selected: _selectedIndex == 0,
-                  onTap: () {
-                    _onItemTapped(4);
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (ctx) => const DesignSystem(),
-                      ),
-                    );
-                  },
-                ),
+                // ListTile(
+                //   title: Row(
+                //     children: [
+                //       const Icon(
+                //         Icons.dashboard,
+                //         color: ThemeColors.primaryText,
+                //       ),
+                //       const SizedBox(
+                //         width: 10,
+                //       ),
+                //       Text('Componentes', style: ThemeTextStyle.robotoText),
+                //     ],
+                //   ),
+                //   selected: _selectedIndex == 0,
+                //   onTap: () {
+                //     _onItemTapped(4);
+                //     Navigator.of(context).push(
+                //       MaterialPageRoute(
+                //         builder: (ctx) => const DesignSystem(),
+                //       ),
+                //     );
+                //   },
+                // ),
               ],
             ),
           ),

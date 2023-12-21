@@ -112,7 +112,7 @@ class _Activities extends ConsumerState<Activities> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Actividades',
+          'Actividades para hoy',
           style: Theme.of(context).textTheme.titleMedium,
         ),
         actions: [

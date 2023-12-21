@@ -1,11 +1,7 @@
-// Copyright 2017 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
-// ignore_for_file: public_member_api_docs
-
 import 'dart:io';
 
+import 'package:app/screens/about.dart';
+import 'package:app/screens/activities.dart';
 import 'package:app/screens/search.dart';
 import 'package:app/theme/custom_theme.dart';
 import 'package:app/theme/theme_manager.dart';
