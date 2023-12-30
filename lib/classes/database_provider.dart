@@ -41,7 +41,7 @@ class DatabaseProvider {
     return data
         .map(
           (row) => Pec.withImage(
-            row['id'] as int,
+            row['id'] as String,
             row['keywords'] as String,
             row['description'] as String,
             row['categories'] as String,

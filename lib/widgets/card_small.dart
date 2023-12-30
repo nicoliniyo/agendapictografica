@@ -34,7 +34,7 @@ class CardSmall extends StatelessWidget {
         this.pec,
        });
 
-  int? id;
+  dynamic? id;
   String? description;
   String? imgUrl;
   Function? tap;

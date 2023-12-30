@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class ActivitiesTodayNotifier extends StateNotifier<List<CardPec>> {
   ActivitiesTodayNotifier() : super([]);
 
-  var logInfo = AppLogger().noStack_i;
+  var logInfo = AppLogger().noStackInfo;
 
   void clearActivities() {
     state = [];

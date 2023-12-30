@@ -1,7 +1,5 @@
 import 'dart:io';
 
-import 'package:app/screens/about.dart';
-import 'package:app/screens/activities.dart';
 import 'package:app/screens/search.dart';
 import 'package:app/theme/custom_theme.dart';
 import 'package:app/theme/theme_manager.dart';

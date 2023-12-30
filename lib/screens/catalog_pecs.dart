@@ -53,7 +53,7 @@ class _CatalogPecs extends State<CatalogPecs> {
       return Stack(
           alignment: Alignment.bottomCenter, children: [
         internalCard,
-        Text('$titleFile'),
+        Text(titleFile),
         //SizedBox(height: 10,)
       ]);
     }).toList();

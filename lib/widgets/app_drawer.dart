@@ -1,9 +1,7 @@
 import 'package:app/screens/about.dart';
 import 'package:app/screens/activities.dart';
 import 'package:app/screens/catalog_pecs.dart';
-import 'package:app/screens/design_system.dart';
 import 'package:app/screens/search.dart';
-import 'package:app/screens/settings.dart';
 import 'package:app/theme/theme_manager.dart';
 import 'package:flutter/material.dart';
 

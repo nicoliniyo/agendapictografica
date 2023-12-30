@@ -37,7 +37,7 @@ class _SearchScreen extends State<SearchScreen> {
       appBar: AppBar(
         title: Text(
           'Buscar',
-          style: Theme.of(context).textTheme.titleLarge,
+          style: Theme.of(context).textTheme.titleMedium,
         ),
         actions: [
           IconButton(
@@ -54,10 +54,10 @@ class _SearchScreen extends State<SearchScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              height: 40,
+              height: 48,
               width: MediaQuery.of(context).size.width - 30,
               child: TextField(
-                cursorHeight: 20,
+                //cursorHeight: 10,
                 textInputAction: TextInputAction.search,
                 decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
@@ -72,7 +72,8 @@ class _SearchScreen extends State<SearchScreen> {
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                     hintText: 'Buscar pictogramas',
-                    hintStyle: Theme.of(context).textTheme.titleSmall,
+                    hintStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: Colors.black12),
+                    //label: const Text('Buscar pictogramas'),
                     suffixIcon: const Icon(Icons.search)),
                     
                 controller: textInputController,

@@ -35,7 +35,7 @@ class AboutScreen extends StatelessWidget {
                     ),
                   ),
                 ]),
-                Divider(),
+                const Divider(),
                 Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   Expanded(
                     flex: 1,
@@ -44,7 +44,7 @@ class AboutScreen extends StatelessWidget {
                     ),
                   ),
                 ]),
-                Divider(),
+                const Divider(),
                 Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   Expanded(
                     flex: 1,
@@ -53,7 +53,7 @@ class AboutScreen extends StatelessWidget {
                     ),
                   ),
                 ]),
-                Divider(),
+                const Divider(),
                 Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   Expanded(
                     flex: 1,
