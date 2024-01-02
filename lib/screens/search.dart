@@ -142,7 +142,7 @@ class _SearchScreen extends State<SearchScreen> {
 }
 
 Future<List<Pictograms>> getData(String searchTerm) {
+  if(searchTerm.isEmpty) return Future.value(List.empty(growable: true));
   var fetchPhotos = PecsImageProvider.fetchPhotos(searchTerm);
-  print('Catalog: ${fetchPhotos.toString()}');
   return fetchPhotos;
 }

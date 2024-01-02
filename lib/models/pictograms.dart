@@ -30,7 +30,7 @@ class Pictograms {
   });
 
   factory Pictograms.fromJson(Map<String, dynamic> json) {
-    print('JSON $json');
+    //print('JSON $json');
     return Pictograms(
       id: json['_id'] as dynamic,
       keywords: json['keywords'] as List<dynamic>,
