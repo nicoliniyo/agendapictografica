@@ -141,8 +141,6 @@ class _Activities extends ConsumerState<Activities> {
       body: Container(
         padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
             child: Row(
-
-              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
                   width: 150,

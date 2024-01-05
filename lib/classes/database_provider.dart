@@ -2,7 +2,7 @@
 import 'package:app/data/pec.dart';
 import 'package:path/path.dart' as path;
 import 'package:sqflite/sqflite.dart' as sql;
-import 'package:sqflite/sqlite_api.dart';
+import 'package:sqflite/sqflite.dart';
 
 class DatabaseProvider {
 
@@ -41,7 +41,7 @@ class DatabaseProvider {
     return data
         .map(
           (row) => Pec.withImage(
-            row['id'] as String,
+            row['id'] as int,
             row['keywords'] as String,
             row['description'] as String,
             row['categories'] as String,
@@ -51,6 +51,13 @@ class DatabaseProvider {
             row['localImgPath'] as String,
         ),
       ).toList();
+  }
 
+  Future<int> totalItemsCatalog() async {
+    final db = await getDatabase();
+    final result = await db.rawQuery('SELECT COUNT(*) FROM pecs');
+    var count = Sqflite.firstIntValue(result);
+    //print("COUNT $count");
+    return count ?? 0;
   }
 }

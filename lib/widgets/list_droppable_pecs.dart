@@ -36,7 +36,7 @@ class _ListDroppablePec extends State<ListDroppablePec> {
           // }
         },
      builder: (BuildContext context, List<CardPec?> candidateData, List<dynamic> rejectedData) {
-       print("BLANC_PEC: ${blankPec.toString()}");
+       //print("BLANC_PEC: ${blankPec.toString()}");
        return blankPec;
       },
    );

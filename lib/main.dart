@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:app/screens/search.dart';
 import 'package:app/theme/custom_theme.dart';
-import 'package:app/theme/theme_manager.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -36,8 +35,6 @@ void main() {
   });
 }
 
-ThemeManager _themeManager = ThemeManager();
-
 class AgendaPecsApp extends StatefulWidget {
   const AgendaPecsApp({super.key});
 
@@ -52,13 +49,11 @@ class _AgendaPecsApp extends State<AgendaPecsApp> {
 
   @override
   void dispose() {
-    _themeManager.removeListener(themeListener);
     super.dispose();
   }
 
   @override
   void initState() {
-    _themeManager.addListener(themeListener);
     super.initState();
   }
 
@@ -79,7 +74,7 @@ class _AgendaPecsApp extends State<AgendaPecsApp> {
 
       theme: lightTheme,
       darkTheme: darkTheme,
-      home: SearchScreen(themeManager: _themeManager),
+      home: const SearchScreen(),
     );
   }
 }

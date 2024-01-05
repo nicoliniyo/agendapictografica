@@ -71,14 +71,14 @@ class _CatalogPecs extends State<CatalogPecs> {
           style: Theme.of(context).textTheme.titleMedium,
         ),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications),
-            onPressed: () {
-              setState(() {
-                showPecsLane = false;
-              });
-            },
-          ),
+          // IconButton(
+          //   icon: const Icon(Icons.notifications),
+          //   onPressed: () {
+          //     setState(() {
+          //       showPecsLane = false;
+          //     });
+          //   },
+          // ),
         ],
       ),
       drawer: const MainAppDrawer(),

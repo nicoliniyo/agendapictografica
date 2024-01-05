@@ -14,10 +14,10 @@ class AboutScreen extends StatelessWidget {
             style: Theme.of(context).textTheme.titleMedium,
           ),
           actions: [
-            IconButton(
-              icon: const Icon(Icons.notifications),
-              onPressed: () {},
-            ),
+            // IconButton(
+            //   icon: const Icon(Icons.notifications),
+            //   onPressed: () {},
+            // ),
           ],
         ),
         drawer: const MainAppDrawer(),

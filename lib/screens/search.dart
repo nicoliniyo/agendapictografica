@@ -1,14 +1,11 @@
 import 'package:app/classes/pecs_image_provider.dart';
 import 'package:app/models/pictograms.dart';
-import 'package:app/theme/theme_manager.dart';
 import 'package:app/widgets/app_drawer.dart';
 import 'package:app/widgets/card_small.dart';
 import 'package:flutter/material.dart';
 
 class SearchScreen extends StatefulWidget {
-  const SearchScreen({super.key, required this.themeManager});
-
-  final ThemeManager themeManager;
+  const SearchScreen({super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -19,6 +16,7 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreen extends State<SearchScreen> {
   TextEditingController textInputController = TextEditingController();
   String searchTerm = '' ;
+  // int totalItemsPecsCatalog = 0;
 
   void updateSearchTerm(String term) {
     
@@ -29,6 +27,18 @@ class _SearchScreen extends State<SearchScreen> {
     }
   }
 
+  // Future<int> countPecsInDB() async {
+  //   var count = await DatabaseProvider().totalItemsCatalog();
+  //   print("countPecsInDB: $count");
+  //   //print("totalItemsPecsCatalog: $totalItemsPecsCatalog");
+  //   return count;
+  // }
+
+  // @override
+  // void initState() {
+  //   countPecsInDB().then((value) => totalItemsPecsCatalog = value);
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +50,10 @@ class _SearchScreen extends State<SearchScreen> {
           style: Theme.of(context).textTheme.titleMedium,
         ),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications),
-            onPressed: () {},
-          ),
+          // IconButton(
+          //   icon: const Icon(Icons.notifications),
+          //   onPressed: () {},
+          // ),
         ],
       ),
       drawer: const MainAppDrawer(),
@@ -56,10 +66,12 @@ class _SearchScreen extends State<SearchScreen> {
             SizedBox(
               height: 48,
               width: MediaQuery.of(context).size.width - 30,
-              child: TextField(
-                //cursorHeight: 10,
+              child: Semantics(
+                label: 'Buscar pictogramas',
+                child: TextField(
                 textInputAction: TextInputAction.search,
                 decoration: InputDecoration(
+
                     focusedBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
                           color: Color.fromARGB(255, 80, 79, 79), width: 1.0),
@@ -72,7 +84,7 @@ class _SearchScreen extends State<SearchScreen> {
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                     hintText: 'Buscar pictogramas',
-                    hintStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: Colors.black12),
+                    hintStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: const Color.fromRGBO(154, 154, 154, 1.0)),
                     //label: const Text('Buscar pictogramas'),
                     suffixIcon: const Icon(Icons.search)),
                     
@@ -81,31 +93,31 @@ class _SearchScreen extends State<SearchScreen> {
                   debugPrint(value);
                   updateSearchTerm(value);
                 },
+               ),
               ),
             ),
             const SizedBox(
               height: 16,
             ),
-            // TextField(controller: textInputController,),
-            FutureBuilder<List<Pictograms>>(
+            MergeSemantics(
+              child: FutureBuilder<List<Pictograms>>(
               future: getData(searchTerm),
               builder: (context, snapshot) {
                 if(searchTerm.isEmpty) {
-                  return const Center(
-                    child: Text('Busquedas previas'),
-                  );
+                  return const Text("Introduzca término a buscar", style: TextStyle(fontSize: 14.0));
                 }
                 if (snapshot.hasError) {
-                  print('ERROR: $snapshot.error');
-                  return const Center(
-                    child: Text('Error inesperado!'),
+                  debugPrint('ERROR: $snapshot.error');
+                  return Center(
+                    child: Text('Error inesperado! ${snapshot.error}'),
                   );
                 } else if (snapshot.hasData) {
                   return Column(children: [
+                    snapshot.data!.length != 0 ?
                     Text(
                       'Encontrados: ${snapshot.data!.length}',
                       style: Theme.of(context).textTheme.labelLarge,
-                    ),
+                    ) :
                     const SizedBox(
                       height: 16,
                     ),
@@ -125,7 +137,6 @@ class _SearchScreen extends State<SearchScreen> {
                                 ),
                               ]);
                         }),
-                    // ]),
                   ]);
                 } else {
                   return const Center(
@@ -133,6 +144,7 @@ class _SearchScreen extends State<SearchScreen> {
                   );
                 }
               },
+            ),
             ),
           ],
         ),

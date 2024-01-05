@@ -1,7 +1,7 @@
 class Pec {
 
   Pec.withImage(
-   String id,
+   int id,
    String keywords,
    String description,
    String categories,
@@ -30,7 +30,7 @@ class Pec {
 
   });
 
-   dynamic? id;
+   dynamic id;
    String? keywords;
    String? description;
    String? categories;
