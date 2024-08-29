@@ -48,12 +48,12 @@ class _CatalogPecs extends State<CatalogPecs> {
     var list = column1Items.map((pec) {
       String? titleFile = pec.keywords;
       File itemFile = File(pec.localImgPath!);
-      print(titleFile! + ' -> ' + itemFile.path);
+      //print(titleFile! + ' -> ' + itemFile.path);
       var internalCard = CardPec(title: titleFile, imgFile: itemFile);
       return Stack(
           alignment: Alignment.bottomCenter, children: [
         internalCard,
-        Text(titleFile),
+        Text(titleFile!),
         //SizedBox(height: 10,)
       ]);
     }).toList();
