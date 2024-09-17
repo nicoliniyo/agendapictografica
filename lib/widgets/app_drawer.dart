@@ -80,7 +80,7 @@ class _AppDrawer extends State<MainAppDrawer> {
                       const SizedBox(
                         width: 10,
                       ),
-                      Text('Catalogo Pecs', style: ThemeTextStyle.robotoText),
+                      Text('Catalogo Pictogramas', style: ThemeTextStyle.robotoText),
                     ],
                   ),
                   selected: _selectedIndex == 1,
@@ -104,7 +104,7 @@ class _AppDrawer extends State<MainAppDrawer> {
                       const SizedBox(
                         width: 10,
                       ),
-                      Text('Descargar Pecs', style: ThemeTextStyle.robotoText),
+                      Text('Descargar Pictogramas', style: ThemeTextStyle.robotoText),
                     ],
                   ),
                   selected: _selectedIndex == 1,
