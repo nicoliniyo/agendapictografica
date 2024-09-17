@@ -1,4 +1,4 @@
-# Agenda PECS <small>1.0</small>
+# Agenda Pictográfica <small>1.0</small>
 
 [GitHub](https://github.com/nicoliniyo/agendapecs)
 [Get Started](README.md)
