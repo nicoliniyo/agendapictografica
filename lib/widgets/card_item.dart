@@ -75,7 +75,7 @@ class CardItem extends StatelessWidget {
                             ],
                           ),
                         ),
-                        const Expanded(
+                        Expanded(
                           flex: 1,
                           child: 
                           Row(

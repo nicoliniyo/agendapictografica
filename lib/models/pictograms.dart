@@ -1,7 +1,7 @@
 
 class Pictograms {
    
-  final int id;
+  final dynamic id;
   final List<dynamic> keywords;
   final bool schematic;
   final bool sex;
@@ -32,7 +32,7 @@ class Pictograms {
   factory Pictograms.fromJson(Map<String, dynamic> json) {
     //print('JSON $json');
     return Pictograms(
-      id: json['_id'] as int,
+      id: json['_id'] as dynamic,
       keywords: json['keywords'] as List<dynamic>,
       schematic: json['schematic'] as bool,
       sex: json['sex'] as bool,

@@ -69,8 +69,8 @@ class _Activities extends ConsumerState<Activities> {
         }
       }
     );
-    print('loadPecsFromRPod PROVIDER: $pecs');
-    print('loadPecsFromRPod listCardPecs: ${listCardPecs.length}');
+    //print('loadPecsFromRPod PROVIDER: $pecs');
+    //print('loadPecsFromRPod listCardPecs: ${listCardPecs.length}');
   }
 
   DragTarget<CardPec> createDropTarget(CardPec blankPec) {
@@ -89,7 +89,7 @@ class _Activities extends ConsumerState<Activities> {
         blankPec = cardPec;
         listCardPecs.add(cardPec);
 
-        print('DragTarget listCardPecs: ${listCardPecs.length}');
+        //print('DragTarget listCardPecs: ${listCardPecs.length}');
         ref.watch(activitiesTodayProvider.notifier)
             .updateAllCardActivities(listCardPecs);
       },
@@ -141,8 +141,6 @@ class _Activities extends ConsumerState<Activities> {
       body: Container(
         padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
             child: Row(
-
-              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
                   width: 150,
@@ -183,12 +181,12 @@ class _Activities extends ConsumerState<Activities> {
                           child : Draggable<CardPec>(
                             key: ValueKey(column1Items[index]),
                             feedback: internalCard,
-                            child: item,//internalCard,
                             childWhenDragging: Opacity(
                               opacity: 0.5,
                               child: internalCard,
                             ),
                             data: internalCard,
+                            child: item,
                             // onDragCompleted: (){
                               // print("DARG COMPLETE!");
                             // },// Data to identify the item
@@ -228,7 +226,7 @@ class _Activities extends ConsumerState<Activities> {
                       const SizedBox(height: 10,),
                       createDropTarget(blankPec5!),
 
-                      Divider(),
+                      const Divider(),
 
                       // Expanded(
                       //   flex: 1,

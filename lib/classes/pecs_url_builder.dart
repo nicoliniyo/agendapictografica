@@ -27,4 +27,9 @@ class PecsUrlBuilder {
   String pictograms(String pictogramId) {
     return '$v1$pictogramasPath$pictogramId$pictogramsQparams';
   }
+
+  //GET "https://api.arasaac.org/api/pictograms/es/2627"
+  String pictogramsMetadata(String pictogramId) {
+    return  '$api$pictogramasPath$lang$pictogramId';
+  }
 }

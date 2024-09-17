@@ -1,16 +1,12 @@
 import 'package:app/screens/about.dart';
 import 'package:app/screens/activities.dart';
 import 'package:app/screens/catalog_pecs.dart';
-import 'package:app/screens/design_system.dart';
 import 'package:app/screens/search.dart';
 import 'package:app/screens/settings.dart';
-import 'package:app/theme/theme_manager.dart';
 import 'package:flutter/material.dart';
 
 import '../theme/custom_theme.dart';
 import 'build_number.dart';
-
-ThemeManager _themeManager = ThemeManager();
 
 class MainAppDrawer extends StatefulWidget {
   const MainAppDrawer({super.key});
@@ -34,13 +30,16 @@ class _AppDrawer extends State<MainAppDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      semanticLabel: 'Menú de opciones seleccionado',
       child: Column(
         children: [
           Expanded(
-            child: ListView(
+            child:
+            MergeSemantics(child:
+            ListView(
               padding: EdgeInsets.zero,
               children: [
-                DrawerHeader(
+                ExcludeSemantics( child: DrawerHeader(
                   decoration: const BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
@@ -69,8 +68,8 @@ class _AppDrawer extends State<MainAppDrawer> {
                     ],
                   ),
                 ),
-                // DB Pecs -> SearchScreen
-                ListTile(
+                ),
+                 ListTile(
                   title: Row(
                     children: [
                       const Icon(
@@ -112,7 +111,7 @@ class _AppDrawer extends State<MainAppDrawer> {
                     _onItemTapped(1);
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (ctx) => SearchScreen(themeManager: _themeManager,),
+                        builder: (ctx) => const SearchScreen(),
                       ),
                     );
                   },
@@ -142,31 +141,30 @@ class _AppDrawer extends State<MainAppDrawer> {
                     );
                   },
                 ),
-                //Ajustes -> SettingsScreen
-                // ListTile(
-                //   title: Row(
-                //     children: [
-                //       const Icon(
-                //         Icons.settings,
-                //         color: ThemeColors.primaryText,
-                //       ),
-                //       const SizedBox(
-                //         width: 10,
-                //       ),
-                //       Text('Ajustes', style: ThemeTextStyle.robotoText),
-                //     ],
-                //   ),
-                //   selected: _selectedIndex == 2,
-                //   onTap: () {
-                //     _onItemTapped(2);
-                //     Navigator.of(context).push(
-                //       MaterialPageRoute(
-                //         builder: (ctx) => SettingsScreen(themeManager: _themeManager,),
-                //       ),
-                //     );
-                //   },
-                // ),
-                //Ajustes -> SettingsScreen
+                // Ajustes -> SettingsScreen
+                ListTile(
+                  title: Row(
+                    children: [
+                      const Icon(
+                        Icons.settings,
+                        color: ThemeColors.primaryText,
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text('Ajustes', style: ThemeTextStyle.robotoText),
+                    ],
+                  ),
+                  selected: _selectedIndex == 2,
+                  onTap: () {
+                    _onItemTapped(2);
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (ctx) => const SettingsScreen(),
+                      ),
+                    );
+                  },
+                ),
                 ListTile(
                   title: Row(
                     children: [
@@ -185,11 +183,12 @@ class _AppDrawer extends State<MainAppDrawer> {
                     _onItemTapped(2);
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (ctx) =>  AboutScreen(),
+                        builder: (ctx) =>  const AboutScreen(),
                       ),
                     );
                   },
                 ),
+
                 //Components -> DesignSystem
                 // ListTile(
                 //   title: Row(
@@ -215,6 +214,7 @@ class _AppDrawer extends State<MainAppDrawer> {
                 //   },
                 // ),
               ],
+             ),
             ),
           ),
           ListTile(
