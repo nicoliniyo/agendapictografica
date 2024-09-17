@@ -146,7 +146,7 @@ class CardSmall extends StatelessWidget {
                           ],
                         ),
                         const Spacer(),
-                        const Row(
+                        Row(
                           children: [
                             Icon(Icons.list_outlined),
                                                         
