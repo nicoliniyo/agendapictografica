@@ -32,7 +32,7 @@ class SettingsScreen extends StatelessWidget {
                     const Divider(),
                     Row(
                       children: [
-                        Text('Decargar PECs'),
+                        Text('Decargar Pictogramas'),
                         Spacer(),
                         // Boton cargar por defecto, si bdd no tiene pecs
                         //   totalItemsPecsCatalog == 0 ?
