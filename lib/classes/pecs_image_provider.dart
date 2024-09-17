@@ -120,7 +120,7 @@ static Future<Pictograms> getPictogram(String pictogramId) async {
       searchAndSave(element, context);
       debugPrint('Fetching pec: $element');
      }
-    ScreenMessages.snackBarMessage('${ids.length} PECs básicos descargados!', context);
+    ScreenMessages.snackBarMessage('${ids.length} Pictogramas básicos descargados!', context);
 
   }
 }
