@@ -67,7 +67,7 @@ class _CatalogPecs extends State<CatalogPecs> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Catalogo de Pecs (${column1Items.length})',
+          'Catalogo de Pictogramas (${column1Items.length})',
           style: Theme.of(context).textTheme.titleMedium,
         ),
         actions: [

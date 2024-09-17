@@ -1,9 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-feature android:name="android.hardware.wifi" />
     <application
-        android:label="Agenda PECS"
+        android:label="Agenda Pictográfica"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        android:targetSdkVersion="34">
         <activity
             android:name=".MainActivity"
             android:exported="true"
