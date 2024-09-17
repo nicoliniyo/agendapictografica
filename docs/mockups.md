@@ -31,12 +31,12 @@ Design Mockups of Screens,, widgets and functions, what is supported, what is no
 
 #### Priority 0
 
-* Suport Arasaac PECS
+* Suport Arasaac images
 * Support local storage for configuration data/settings
-* Support local storage for pecs/image handling
+* Support local storage for pics/image handling
 * Support for i18n
 * Search Screen
-* Activities Screen with local PECS storage
+* Activities Screen with local images storage
 
 #### Priority 1
 
@@ -48,7 +48,7 @@ Design Mockups of Screens,, widgets and functions, what is supported, what is no
   
 ### Mvp
 
-* Android 9 MVP local apk
+* Android 14 MVP local apk
 
 
 ### Mockups
