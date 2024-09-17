@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:app/classes/app_logger.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'card_pec.dart';
@@ -30,8 +31,9 @@ class ListPecs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var logger = AppLogger();
     //updateCatalog();
-    print('Size local pecs: ${column1Items.length}');
+    logger.prettyInfoMsg('Size local pecs: ${column1Items.length}');
     return SizedBox(
       width: (expanded ? 120 : 20),
       //flex: 1,
@@ -47,7 +49,7 @@ class ListPecs extends StatelessWidget {
                     itemBuilder: (BuildContext context, int index) {
                     String titleFile = column1Items[index].path.split('/').last;
                     File itemFile = column1Items[index];
-                    print('$titleFile -> ${itemFile.path}');
+                    logger.prettyInfoMsg('$titleFile -> ${itemFile.path}');
                     var internalCard = CardPec(title: titleFile, imgFile: itemFile);
                   // Wrap the CardPec with Draggable
                     return

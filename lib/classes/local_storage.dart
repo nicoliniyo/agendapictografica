@@ -26,9 +26,9 @@ class LocalStorage {
     var pathAndFilename = await createImageToLocalPath(imageUrl, targetFileName);
     final file = File(pathAndFilename);
     if(file.existsSync()){
-      print('File Exists: $pathAndFilename');
+      //print('File Exists: $pathAndFilename');
     } else {
-      print('Writing TargetFilename: ${pathAndFilename}');
+      //print('Writing TargetFilename: ${pathAndFilename}');
       await file.writeAsBytes(response.bodyBytes);
     }
     //setState(() {});
@@ -39,7 +39,7 @@ class LocalStorage {
 /// Example 4321.png
   Future<void> copyPictogramImageToLocal(Pictograms pictogram) async {
     var pec = PictogramUtils.toPec(pictogram);
-    print("PEC: $pec");
+    //print("PEC: $pec");
     LocalStorage().copyImageToLocal(
       PecsUrlBuilder().pictograms(pec.id.toString()),
       pictogram.id.toString()
@@ -48,7 +48,7 @@ class LocalStorage {
 
   Future<int> savePecToDb(Pec pec) async {
 
-    print("copyPecToDb:");
+    //print("copyPecToDb:");
     debugPrint("PEC.id: ${pec.id.toString()}");
     debugPrint("PEC.imgUrl: ${pec.imgUrl}");
     debugPrint("PEC.localImgPath: ${pec.localImgPath}");

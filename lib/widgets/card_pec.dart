@@ -31,7 +31,7 @@ class CardPec extends StatelessWidget {
   Pec? pecObject;
 
   Pec get pecObj {
-    return this.pecObject!;
+    return pecObject!;
   }
 
   @override

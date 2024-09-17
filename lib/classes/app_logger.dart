@@ -3,22 +3,22 @@ import 'package:logger/logger.dart';
 
 class AppLogger {
   get prettyInfo {
-    return pretty_i;
+    return prettyInfoMsg;
   }
 
-  get noStack_i {
+  get noStackInfo {
     return noStack.i;
   }
 
-  void pretty_i(String message) {
+  void prettyInfoMsg(String message) {
     pretty.i(message);
   }
 
-  void pretty_d(String message) {
+  void prettyDebugMsg(String message) {
     pretty.d(message);
   }
 
-  void pretty_w(String message) {
+  void prettyWarningMsg(String message) {
     pretty.w(message);
   }
 

@@ -1,6 +1,7 @@
-import 'package:app/classes/local_storage.dart';
+import 'package:app/classes/pecs_image_provider.dart';
 import 'package:app/classes/pecs_url_builder.dart';
 import 'package:app/classes/pictogram_utils.dart';
+import 'package:app/classes/screen_messages.dart';
 import 'package:app/classes/string_capitalize_extension.dart';
 import 'package:app/data/pec.dart';
 import 'package:app/models/pictograms.dart';
@@ -34,7 +35,7 @@ class CardSmall extends StatelessWidget {
         this.pec,
        });
 
-  int? id;
+  dynamic id;
   String? description;
   String? imgUrl;
   Function? tap;
@@ -42,35 +43,6 @@ class CardSmall extends StatelessWidget {
   String? categories;
   String? tags;
   Pec? pec;
-
-  void _snackBarMessage(String text, BuildContext context) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: Colors.pink,
-          content: Text(text),
-        ),
-      );
-    }
-  
-  //final void Function(String identifier) 
-  void _updatePecAndSave(String imgUrl, String id, BuildContext context)  async {
-    //Save img in local
-    LocalStorage().copyImageToLocal(imgUrl, id);
-    //Update local pecObject with local path of image
-    await LocalStorage().createImageToLocalPath(imgUrl, id.toString())
-    .then((value) => pec!.localImgPath = value);
-
-    //Save to DB
-    //try {
-    await LocalStorage().savePecToDb(pec!)
-    .then((value) => print('SAVED_TO_DB: $value, PEC.id: ${pec!.id.toString()}'));
-    // catch (DatabaseException error) {
-    // Unhandled Exception: DatabaseException(UNIQUE constraint failed: pecs.id (code 1555 SQLITE_CONSTRAINT_PRIMARYKEY))
-    // }
-    _snackBarMessage("${pec!.keywords} guardado con exito!", context);
-    
-  }
- 
 
   @override
   Widget build(BuildContext context) {
@@ -139,7 +111,7 @@ class CardSmall extends StatelessWidget {
                             // SizedBox(width: 8),
                             IconButton(
                                 icon: const Icon(Icons.cloud_download_outlined),
-                                onPressed: () => _updatePecAndSave(imgUrl!, id!.toString(), context),
+                                onPressed: () => PecsImageProvider.updatePecAndSave(imgUrl!, id!.toString(), pec!, context, ScreenMessages.snackBarMessage("${pec!.keywords} guardado con exito!", context)),
                               ),
                             const SizedBox(width: 8),
                             const Icon(Icons.delete_outline_outlined),

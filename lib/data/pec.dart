@@ -30,7 +30,7 @@ class Pec {
 
   });
 
-   int? id;
+   dynamic id;
    String? keywords;
    String? description;
    String? categories;
