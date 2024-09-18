@@ -1,4 +1,4 @@
-# Política de Privacidad de la Aplicación Agenda PECs
+# Política de Privacidad de la Aplicación Agenda Pictografica
 
 ## Última actualización: 21/12/2023
 
