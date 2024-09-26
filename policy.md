@@ -1,6 +1,6 @@
 # Política de Privacidad de la Aplicación Agenda Pictografica
 
-## Última actualización: 21/12/2023
+## Última actualización: 26/09/2024
 
 Esta Política de Privacidad describe cómo Agenda Pictografica ("nosotros", "nuestro" o "la aplicación") utiliza la aplicación en la plataforma Google Play Store.
 
@@ -38,6 +38,6 @@ Podemos actualizar esta Política de Privacidad de vez en cuando. Le notificarem
 
 Si tiene alguna pregunta o inquietud sobre nuestra Política de Privacidad o el manejo de datos en la aplicación Network Info, no dude en ponerse en contacto con nosotros en la siguiente dirección de correo electrónico: nicoliniyo@gmail.com.
 
-Al utilizar nuestra aplicación, usted acepta los términos de esta Política de Privacidad. Asegúrese de revisar y comprender esta política antes de utilizar la aplicación Network Info.
+Al utilizar nuestra aplicación, usted acepta los términos de esta Política de Privacidad. Asegúrese de revisar y comprender esta política antes de utilizar la aplicación.
 
 El Autor, 21/12/2023
