@@ -2,12 +2,12 @@
 
 ## Última actualización: 21/12/2023
 
-Esta Política de Privacidad describe cómo Agenda PECs ("nosotros", "nuestro" o "la aplicación") utiliza la aplicación en la plataforma Google Play Store.
+Esta Política de Privacidad describe cómo Agenda Pictografica ("nosotros", "nuestro" o "la aplicación") utiliza la aplicación en la plataforma Google Play Store.
 
 Este proyecto consiste en desarrollar un intercambio de imágenes destinado a crear una aplicación diseñada para facilitar la gestión de tareas dentro de una agenda visual.
 
-Para obtener ayuda para comenzar con el proyecto Agenda Pecs, consulte la
-[documentación en línea](https://nicoliniyo.github.io/agendapecs/), que ofrece diseño,
+Para obtener ayuda para comenzar con el proyecto Agenda Pictografica, consulte la
+[documentación en línea](https://nicoliniyo.github.io/agendapictografica/), que ofrece diseño,
 características y orientación sobre la instalación y experiencia del usuario con las aplicaciones.
 
 ### Uso de la información
